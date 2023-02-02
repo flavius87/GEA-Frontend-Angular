@@ -1,0 +1,265 @@
+<body>
+<main class="main">
+  <section class="slide" id="inicio">
+    <div class="mySlider">
+      <h1 class="mySlider__title animate__slideInDown">Arquitectura & Construcción</h1>
+    </div>
+  <app-slides></app-slides>
+  </section>
+        <!-- Servicios -->
+        <section class="services container" id="servicios">
+            <div class="service" [ngClass]="{'noanimated': !scrollingService, 'fadeInLeft':scrollingService}" #service>
+                <figure class="service__img">
+                    <img src="assets/icons/conversation.svg" alt="conversation">
+                </figure>
+                <h3 class="service__title">Ideamos</h3>
+                <p class="service__paragraph">Escuchamos tus ideas y te brindamos asesoramiento acorde para que puedas
+                    considerar
+                    las variantes en modelos de construcción, tiempos de ejecución y costos.</p>
+            </div>
+            <div class="service" [ngClass]="{'noanimated': !scrollingService, 'fadeInLeft':scrollingService}" id="house" #service>
+                <figure class="service__img">
+                    <img src="assets/icons/house.svg" alt="Casas a medida">
+                </figure>
+                <h3 class="service__title">Proyectamos</h3>
+                <p class="service__paragraph">Le damos forma a tus ideas y las transformamos en un proyecto
+                    constructivo,
+                    para que puedas ver un resultado simulado en alta calidad.</p>
+            </div>
+            <div class="service" [ngClass]="{'noanimated': !scrollingService, 'fadeInLeft':scrollingService}" id="calculator" #service>
+                <figure class="service__img">
+                    <img src="assets/icons/calculator.svg" alt="Calculadora de presupuesto">
+                </figure>
+                <h3 class="service__title">Presupuestamos</h3>
+                <p class="service__paragraph">Realizamos una propuesta económica clara, que cubra todas las necesidades
+                    de
+                    tu proyecto.</p>
+            </div>
+            <div class="service" [ngClass]="{'noanimated': !scrollingService, 'fadeInLeft':scrollingService}" id="worker" #service>
+                <figure class="service__img">
+                    <img src="assets/icons/work.svg" alt="Casco de constructor">
+                </figure>
+                <h3 class="service__title">Construimos</h3>
+                <p class="service__paragraph">Llevamos a cabo el proyecto siguiendo tu decisión y de acuerdo con todos
+                    los
+                    requerimientos
+                    específicos de la jurisdicción en la que se ejecute.</p>
+            </div>
+            <div class="service" [ngClass]="{'noanimated': !scrollingService, 'fadeInLeft':scrollingService}" id="keys" #service>
+                <figure class="service__img">
+                    <img src="assets/icons/key.svg" alt="Entregas llave en mano">
+                </figure>
+                <h3 class="service__title">Entregamos</h3>
+                <p class="service__paragraph">Te ofrecemos un modelo de construcción integral "llave en mano",
+                    mediante el cual nos encargamos de entregar tu casa, oficina o local, con todas las terminaciones y
+                    servicios instalados. Tu vivienda lista en hasta 60 días.
+                    También podés optar por "obra gris". Es tu elección.</p>
+            </div>
+        </section>
+
+        <!-- Obras -->
+        <section class="works container" id="obras">
+          <div class="works__title" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
+            <h2>Proyectos finalizados</h2>
+            <div class="works__separator center"></div>
+          </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
+                <picture>
+                    <source srcset="assets/images/galery/frente-de-casa-revestida-en-madera.webp" type="image/webp">
+                    <img src="assets/images/galery/frente-de-casa-revestida-en-madera.jpeg" loading="lazy" alt="Frente de casa revestida en madera">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Revestimiento en madera</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
+                <picture>
+                    <source srcset="assets/images/galery/casa-numero-iluminado.webp" type="image/webp">
+                    <img src="assets/images/galery/casa-numero-iluminado.jpg" loading="lazy" alt="Frente de casa con número iluminado">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Construcción tradicional</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
+                <picture>
+                    <source srcset="assets/images/galery/construccion-piscina.webp" type="image/webp">
+                    <img src="assets/images/galery/construccion-piscina.jpeg" loading="lazy" alt="Piscina en casa de fin de semana">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Piscina</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork *ngFor="let icollection of icollections">
+                <picture>
+                    <source srcset="assets/images/galery/arquitectura-interiores-restaurante.webp" type="image/webp">
+                    <img src="assets/images/galery/arquitectura-interiores-restaurante.jpg" loading="lazy" alt="Arquitectura de interiores en restaurante Osaki sushi de La Plata">
+                </picture>
+                <a (click)="goToWork(icollection.url)">
+                <div class="work__overlay">
+                    <h3 class="work__title">Local comercial en calle 47</h3>
+                </div>
+                </a>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkTwo, 'fadeInUp':scrollingWorkTwo}" #workGaleryWorkTwo>
+                <picture>
+                    <source srcset="assets/images/galery/diseño-interiores-wood-frame.webp" type="image/webp">
+                    <img src="assets/images/galery/diseño-interiores-wood-frame.jpeg" loading="lazy" alt="Pasillo en segundo piso construido en wood frame en Melchor Romero">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Interior Wood Frame</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkTwo, 'fadeInUp':scrollingWorkTwo}" #workGaleryWorkTwo>
+                <picture>
+                    <source srcset="assets/images/galery/baño-moderno-wood-frame.webp" type="image/webp">
+                    <img src="assets/images/galery/baño-moderno-wood-frame.jpeg" loading="lazy" alt="Baño en segundo piso construido en wood frame en Melchor Romero">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Baño en Wood Frame</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkTwo, 'fadeInUp':scrollingWorkTwo}" #workGaleryWorkTwo>
+                <picture>
+                    <source srcset="assets/images/galery/habitacion-piso-flotante.webp" type="image/webp">
+                    <img src="assets/images/galery/habitacion-piso-flotante.jpeg" loading="lazy" alt="Habitación en segundo piso construida en wood frame en Melchor Romero">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Habitación en Wood Frame</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkTwo, 'fadeInUp':scrollingWorkTwo}" #workGaleryWorkTwo>
+                <picture>
+                    <source srcset="assets/images/galery/casa-propia-procrear.webp" type="image/webp">
+                    <img src="assets/images/galery/casa-propia-procrear.jpg" loading="lazy" alt="Casa construida en sistema wood frame con crédito Procrear">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Construcción en Wood Frame</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkThree, 'fadeInUp':scrollingWorkThree}" #workGaleryWorkThree>
+                <picture>
+                    <source srcset="assets/images/galery/baño-construccion-city-bell.webp" type="image/webp">
+                    <img src="assets/images/galery/baño-construccion-city-bell.jpeg" loading="lazy" alt="Baño de casa de City Bell construida en wood frame">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Baño en Wood Frame</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkThree, 'fadeInUp':scrollingWorkThree}" #workGaleryWorkThree>
+                <picture>
+                    <source srcset="assets/images/galery/direccion-de-obra-local-reformado-sushi.webp" type="image/webp">
+                    <img src="assets/images/galery/direccion-de-obra-local-reformado-sushi.jpg" loading="lazy" alt="Reforma integral en restaurante de shushi en La Plata">
+                </picture>
+                <a routerLink="/reforma-de-local-comercial-osaki">
+                <div class="work__overlay">
+                    <h3 class="work__title">Reforma de local comercial en La Plata</h3>
+                </div>
+                </a>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkThree, 'fadeInUp':scrollingWorkThree}" #workGaleryWorkThree>
+                <picture>
+                    <source srcset="assets/images/galery/construccion-procrear-sicardi-cocina.webp" type="image/webp">
+                    <img src="assets/images/galery/construccion-procrear-sicardi-cocina.jpeg" loading="lazy" alt="Mesada de cocina construcción en Sicardi">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Cocina en Wood Frame</h3>
+                </div>
+            </div>
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWorkThree, 'fadeInUp':scrollingWorkThree}" #workGaleryWorkThree>
+                <picture>
+                    <source srcset="assets/images/galery/pergola-de-madera.webp" type="image/webp">
+                    <img src="assets/images/galery/pergola-de-madera.jpeg" loading="lazy" alt="Pérgola">
+                </picture>
+                <div class="work__overlay">
+                    <h3 class="work__title">Pérgola</h3>
+                </div>
+            </div>
+        </section>
+
+<!-- Sobre nosotros -->
+<section class="abouts" id="sobre-nosotros">
+<div class="about">
+    <div class="about__card">
+        <picture>
+            <source src="assets/images/ayelen-giles-arquitecta-city-bell.webp" type="image/webp">
+            <img src="assets/images/ayelen-giles-arquitecta-city-bell.jpg" loading="lazy"
+                alt="Ayelén Giles, Arquitecta Directora del Estudio GEA">
+        </picture>
+    </div>
+
+    <h2 class="about__title">Ayelén Giles</h2>
+    <h3 class="about__subtitle">Arquitecta</h3>
+    <div class="about__paragraph container">
+        <p>Somos <span>GEA Arquitectura</span>, un estudio especializado en <span>proyectos de construcción a medida en la región de Gran La Plata,
+          ciudades aledañas, en Pinamar y en La Costa</span>. Dirigido por la arquitecta Ayelén Giles, nuestro estudio se encuentra en City Bell,
+          un entorno en constante desarrollo inmobiliario que nos inspira a seguir las últimas tendencias en arquitectura.</p>
+
+        <p>Desde el 2017, brindamos un servicio integral de arquitectura para satisfacer todas las necesidades de cada proyecto,
+          garantizando transparencia y compromiso. Trabajamos con diferentes <span>sistemas de construcción, como ladrillo,
+          steel frame y wood frame</span>, así como combinaciones entre construcción húmeda y en seco.</p>
+
+        <p>Nuestros servicios incluyen diseño y construcción de viviendas familiares, casas o departamentos de alquiler,
+          garajes, quinchos, oficinas, piscinas de hormigón, pérgolas, decks, reformas, ampliaciones y proyectos paisajísticos, entre otros.</p>
+
+        <p>Valoramos el tiempo como un factor crucial en la construcción, por lo que buscamos optimizar los plazos mediante
+          una buena planificación y trabajando con profesionales confiables y experimentados.
+          <span>Ofrecemos viviendas llave en mano en 60 días con el sistema de construcción en seco.</span>
+          Si estás buscando arquitectura y construcción a medida, no dudes en contactarnos.</p>
+    </div>
+  </div>
+  <div class="about__credit">
+      <div class="about__img__credit">
+          <h2 class="about__subtitle">
+              <a href="https://www.argentina.gob.ar/habitat/procrear" target="_blank">Créditos Línea Procrear</a>
+          </h2>
+          <div class="about__paragraph container" style="color: white">
+              <p>
+                  ¿Sos beneficiario de la línea de créditos Procrear? ¿Querés construir o reformar tu casa?
+                  Escribinos y <span>te ayudamos a hacer que el crédito para tu casa propia rinda más</span>.
+                  Diseñamos arquitectura a medida de tus necesidades. <span>Proyectos de construcción personalizada</span>.
+              </p>
+          </div>
+          <div class="procrear">
+              <img src="/assets/logos/procrearLogo.png" loading="lazy" alt="Procrear Logo">
+          </div>
+      </div>
+  </div>
+</section>
+<section class="contact container" id="contacto">
+  <app-form></app-form>
+</section>
+
+<!-- Logos -->
+ <section class="logos container">
+    <div class="logos__title">Acompañan nuestros proyectos:</div>
+    <div class="logos__img">
+        <div class="logo move">
+            <a href="http://www.mussispropiedades.com.ar/" target="_blank">
+                <img src="/assets/logos/mussisLogo.png" loading="lazy" alt="Mussis Logo">
+            </a>
+        </div>
+        <div class="logo move">
+            <a href="https://miksa.com.ar/" target="_blank">
+                <img src="/assets/logos/miksaLogo.png" loading="lazy" alt="Miksa Logo">
+            </a>
+        </div>
+        <div class="logo move">
+            <a href="https://molber-steelframe.com/" target="_blank">
+                <img src="/assets/logos/molberLogo.png" loading="lazy" alt="Molber Logo">
+            </a>
+        </div>
+        <div class="logo move">
+            <a href="https://www.facebook.com/materialesberisso/" target="_blank">
+                <img src="/assets/logos/mbLogo.png" loading="lazy" alt="Materiales Berisso Logo">
+            </a>
+        </div>
+        <div class="logo move">
+            <a href="https://linktr.ee/whatsapp.info" target="_blank">
+                <img src="/assets/logos/elgrilloLogo.png" loading="lazy" alt="Ferretería de La Plata El Grillo Logo">
+            </a>
+        </div>
+    </div>
+</section>
+</main>
+</body>

@@ -25,9 +25,11 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/css/styles.css",
+              "./node_modules/swiper/swiper-bundle.min.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -87,12 +89,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/css/styles.css",
+              "./node_modules/swiper/swiper-bundle.min.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f539adbe-d7c5-4fbb-931b-d97f66138227"
   }
 }
