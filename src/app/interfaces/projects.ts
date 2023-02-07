@@ -1,24 +1,17 @@
 export interface Icollection {
-  url:string;
-  title:string;
-  style:string;
-  name:string;
-  location?:string;
-  city:string;
-  year:number;
-  description:string;
-  src:Src[];
-  video?:Video[];
+  url: string;
+  srcset: string [];
+  src: string [];
+  alt: string [];
+  title: string;
+  style: string;
+  design?: string;
+  location: string;
+  city?: string;
+  year: number;
+  description: string;
+  href?: string;
+  video?: string;
+  videoTitle?: string;
 }
 
-interface Src {
-  src:string;
-  srcset:string;
-  alt:string;
-  title?:string;
-}
-
-interface Video {
-  videoUrl:string;
-  title?:string;
-}

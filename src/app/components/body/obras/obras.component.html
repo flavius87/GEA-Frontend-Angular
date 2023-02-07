@@ -1,88 +1,85 @@
 
-<section class="project container animate__fadeIn">
+<section class="project container animate__fadeIn" *ngFor="let icollection of icollections">
     <div class="project__img" (scroll)="onScroll()" [ngClass]="scrollingbgVariable?'bg':'notbg'">
         <picture>
-            <source srcset="assets/images/osaki/reforma-local-osaki-frente.webp" type="image/webp">
-            <img src="assets/images/osaki/reforma-local-osaki-frente.jpg" loading="lazy" alt="Reforma Local Osaki en La Plata">
+            <source [srcset]="icollection.srcset[1]" type="image/webp">
+            <img [src]="icollection.src[1]" loading="lazy" [alt]="icollection.alt[1]">
         </picture>
     </div>
     <div class="project__text__card container" (scroll)="onScroll()" [ngClass]="scrollingbgVariable?'bg':'notbg'">
-        <h1>Reforma integral de espacio comercial</h1>
+        <h1>{{icollection.title}}</h1>
         <br>
         <hr class="project__space" >
         <br>
 
         <h4>Estilo</h4>
-        <p class="project__paragraph">Asiático</p>
+        <p class="project__paragraph">{{icollection.style}}</p>
         <hr>
         <br>
         <h4>Proyecto</h4>
-        <p class="project__paragraph"><a href="https://estudiomosh.com/" target="_blank">Estudio Mosh</a></p>
+        <p class="project__paragraph"><a [href]="icollection.href" target="_blank">{{icollection.design}}</a></p>
         <hr>
         <br>
         <h4>Ubicación</h4>
-        <p class="project__paragraph">Calle 47 N° 717 entre 9 y Diag. 74</p>
+        <p class="project__paragraph">{{icollection.location}}</p>
         <hr>
         <br>
         <h4>Localidad</h4>
-        <p class="project__paragraph">La Plata</p>
+        <p class="project__paragraph">{{icollection.city}}</p>
         <hr>
         <br>
         <h4>Año</h4>
-        <p class="project__paragraph">2022</p>
+        <p class="project__paragraph">{{icollection.year}}</p>
         <br>
     </div>
     <div class="project__text" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
         <div class="project__separator"><div class="project__separator__2" [ngClass]="{'noanimated': !scrollingFadeIn, 'project__separator__animated ':scrollingFadeIn}" #project></div></div>
         <h3>Sobre el proyecto</h3>
-        <p>Dirección y Ejecución de la reforma integral de esta superficie comercial del centro de La Plata, destinada al restaurante Osaki Sushi.
-          Un proyecto en conjunto con Estudio Mosh, a cargo del diseño y proyección de la obra.
-          Trabajamos con dedicación y experiencia para lograr un espacio único y funcional para el restaurante.
-        </p>
+        <p>{{icollection.description}}</p>
         <div class="project__separator"></div>
     </div>
     <div class="project__img__2 container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
       <picture>
-          <source srcset="assets/images/osaki/reforma-osaki-gea-arquitectura.webp" type="image/webp">
-          <img src="assets/images/osaki/reforma-osaki-gea-arquitectura.jpg" loading="lazy" alt="Reforma Local Osaki en La Plata">
+          <source [srcset]="icollection.srcset[2]" type="image/webp">
+          <img [src]="icollection.src[2]" loading="lazy" [alt]="icollection.alt[2]">
       </picture>
     </div>
     <div class="project__img__3 container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
       <picture>
-          <source srcset="assets/images/osaki/reforma-local-osaki-gea-arquitectura-construccion.webp" type="image/webp">
-          <img src="assets/images/osaki/reforma-local-osaki-gea-arquitectura-construccion.jpg" loading="lazy" alt="Reforma Local Osaki en La Plata">
+          <source [srcset]="icollection.srcset[3]" type="image/webp">
+          <img [src]="icollection.src[3]" loading="lazy" [alt]="icollection.alt[3]">
       </picture>
     </div>
     <div class="project__img__4 container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
       <picture>
-          <source srcset="assets/images/osaki/reforma-local-osaki-interior.webp" type="image/webp">
-          <img src="assets/images/osaki/reforma-local-osaki-interior.jpg" loading="lazy" alt="Reforma Local Osaki en La Plata">
+          <source [srcset]="icollection.srcset[4]" type="image/webp">
+          <img [src]="icollection.src[4]" loading="lazy" [alt]="icollection.alt[4]">
       </picture>
       <div class="project__pic"><p>Reforma interior de local Osaki.</p></div>
     </div>
     <div class="project__img__5 container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
       <picture>
-          <source srcset="assets/images/osaki/reforma-local-osaki-frente-calle-47.webp" type="image/webp">
-          <img src="assets/images/osaki/reforma-local-osaki-frente-calle-47.jpg" loading="lazy" alt="Reforma Local Osaki en La Plata">
+          <source [srcset]="icollection.srcset[5]" type="image/webp">
+          <img [src]="icollection.src[5]" loading="lazy" [alt]="icollection.alt[5]">
       </picture>
       <div class="project__pic"><p>Nuevo revestimiento del frente de local Osaki.</p></div>
     </div>
     <div class="project__img__6 container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
       <picture>
-          <source srcset="assets/images/osaki/reforma-local-osaki-interior-la-plata.webp" type="image/webp">
-          <img src="assets/images/osaki/reforma-local-osaki-interior-la-plata.jpg" loading="lazy" alt="Reforma Local Osaki en La Plata">
+          <source [srcset]="icollection.srcset[6]" type="image/webp">
+          <img [src]="icollection.src[6]" loading="lazy" [alt]="icollection.alt[6]">
       </picture>
       <div class="project__pic"><p>Reforma interior de local Osaki.</p></div>
     </div>
     <div class="project__img__7 container" [ngClass]="{'noanimated': !scrollingFadeInThree, 'animated':scrollingFadeInThree}" #projectThree>
       <picture>
-          <source srcset="assets/images/osaki/reforma-local-osaki-frente-la-plata.webp" type="image/webp">
-          <img src="assets/images/osaki/reforma-local-osaki-frente-la-plata.jpg" loading="lazy" alt="Reforma Local Osaki en La Plata">
+          <source [srcset]="icollection.srcset[7]" type="image/webp">
+          <img [src]="icollection.src[7]" loading="lazy" [alt]="icollection.alt[7]">
       </picture>
       <div class="project__pic"><p>Nuevo revestimiento del frente de local Osaki.</p></div>
     </div>
     <div class="project__video container" [ngClass]="{'noanimated': !scrollingFadeInThree, 'animated':scrollingFadeInThree}" #projectThree>
-      <iframe src="https://www.youtube.com/embed/iWUySHEqmAI" title="Modelado arquitectónico - Casa en Ostende"
+      <iframe [src]="getVideoIframe(icollection.video)" [title]="icollection.videoTitle"
       frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </section>

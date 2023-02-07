@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { tap } from 'rxjs';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
 import { Icollection } from '../../../interfaces/projects';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -24,12 +24,15 @@ export class ObrasComponent implements OnInit{
   icollection: any = {};
 
   constructor(private dataService:DataService,
-    private readonly route:ActivatedRoute){}
+    private readonly route:ActivatedRoute,
+    private _sanitizer: DomSanitizer){}
 
   ngOnInit(): void{
     this.route.params.subscribe( params => {
       this.icollection = this.dataService.getWork( params['url'] );
     })
+    this.dataService.getWorks().subscribe(
+      icollections => {this.icollections = icollections})
   }
 
   @HostListener('document:scroll', ['$event'])
@@ -56,6 +59,19 @@ export class ObrasComponent implements OnInit{
       this.scrollingbgVariable = false;
     }
   }
+
+  getVideoIframe(url:any) {
+    var video, results;
+
+    if (url === null) {
+        return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    video   = (results === null) ? url : results[1];
+
+    return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
+}
+
 }
 
 

@@ -32,6 +32,8 @@ export class BodyComponent implements OnInit {
         this.icollections = icollections;
       }
     )
+    this.dataService.getWorks().subscribe(
+      icollections => {this.icollections = icollections})
   }
 
   @HostListener('document:scroll', ['$event'])

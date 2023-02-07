@@ -58,7 +58,7 @@
         </section>
 
         <!-- Obras -->
-        <section class="works container" id="obras">
+        <section class="works container" id="obras" *ngFor="let icollection of icollections">
           <div class="works__title" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
             <h2>Proyectos finalizados</h2>
             <div class="works__separator center"></div>
@@ -90,14 +90,14 @@
                     <h3 class="work__title">Piscina</h3>
                 </div>
             </div>
-            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork *ngFor="let icollection of icollections">
+            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
                 <picture>
-                    <source srcset="assets/images/galery/arquitectura-interiores-restaurante.webp" type="image/webp">
-                    <img src="assets/images/galery/arquitectura-interiores-restaurante.jpg" loading="lazy" alt="Arquitectura de interiores en restaurante Osaki sushi de La Plata">
+                    <source [srcset]="icollection.srcset[0]" type="image/webp">
+                    <img [src]="icollection.src[0]" loading="lazy" [alt]="icollection.alt[0]">
                 </picture>
                 <a (click)="goToWork(icollection.url)">
                 <div class="work__overlay">
-                    <h3 class="work__title">Local comercial en calle 47</h3>
+                    <h3 class="work__title">{{icollection.title}}</h3>
                 </div>
                 </a>
             </div>

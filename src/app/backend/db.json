@@ -4,13 +4,22 @@
     "url": "reforma-de-local-comercial-osaki",
     "title": "Reforma integral de espacio comercial",
     "style": "Asiático",
-    "name": "Estudio Mosh",
+    "design": "Estudio Mosh",
+    "href": "https://estudiomosh.com/",
     "location": "Calle 47 N° 717 entre 9 y Diag. 74",
     "city": "La Plata",
     "year": 2022,
     "description": "Dirección y Ejecución de la reforma integral de esta superficie comercial del centro de La Plata, destinada al restaurante Osaki Sushi. Un proyecto en conjunto con Estudio Mosh, a cargo del diseño y proyección de la obra. Trabajamos con dedicación y experiencia para lograr un espacio único y funcional para el restaurante.",
-    "src":["assets/images/osaki/reforma-local-osaki-frente.jpg", "assets/images/osaki/reforma-local-osaki-frente.webp", "Reforma Local Osaki en La Plata"],
-    "video":[]
+    "src":["assets/images/galery/arquitectura-interiores-restaurante.jpg", "assets/images/osaki/reforma-local-osaki-frente.jpg", "assets/images/osaki/reforma-osaki-gea-arquitectura.jpg",
+    "assets/images/osaki/reforma-local-osaki-gea-arquitectura-construccion.jpg", "assets/images/osaki/reforma-local-osaki-interior.jpg", "assets/images/osaki/reforma-local-osaki-frente-calle-47.jpg",
+    "assets/images/osaki/reforma-local-osaki-interior-la-plata.jpg", "assets/images/osaki/reforma-local-osaki-frente-la-plata.jpg"],
+    "srcset": ["assets/images/galery/arquitectura-interiores-restaurante.webp", "assets/images/osaki/reforma-local-osaki-frente.webp", "assets/images/osaki/reforma-osaki-gea-arquitectura.webp",
+    "assets/images/osaki/reforma-local-osaki-gea-arquitectura-construccion.webp", "assets/images/osaki/reforma-local-osaki-interior.webp", "assets/images/osaki/reforma-local-osaki-frente-calle-47.webp",
+    "assets/images/osaki/reforma-local-osaki-interior-la-plata.webp", "assets/images/osaki/reforma-local-osaki-frente-la-plata.webp"],
+    "alt": ["Arquitectura de interiores en restaurante Osaki sushi de La Plata", "Reforma Local Osaki en La Plata", "Trabajos de reforma en espacio comercial", "Gea Arquitectura reformas",
+    "Reformas interiores en La Plata", "Frente de local Osaki", "Arquitectura de interiores espacio comercial", "Gea Arquitectura reforma de local en La Plata"],
+    "video": "embed/iWUySHEqmAI",
+    "videoTitle": "Modelado arquitectónico - Casa en Ostende"
     }
   ]
 }
