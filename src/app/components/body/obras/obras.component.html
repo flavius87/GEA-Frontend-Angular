@@ -1,12 +1,12 @@
-
-<section class="project container animate__fadeIn" *ngFor="let icollection of icollections">
+<app-loading *ngIf="loading"></app-loading>
+<section class="project animate__fadeIn" *ngIf="!loading">
     <div class="project__img" (scroll)="onScroll()" [ngClass]="scrollingbgVariable?'bg':'notbg'">
         <picture>
-            <source [srcset]="icollection.srcset[1]" type="image/webp">
-            <img [src]="icollection.src[1]" loading="lazy" [alt]="icollection.alt[1]">
+            <source [srcset]="icollection.srcset[0]" type="image/webp">
+            <img [src]="icollection.src[0]" loading="lazy" [alt]="icollection.alt[1]">
         </picture>
     </div>
-    <div class="project__text__card container" (scroll)="onScroll()" [ngClass]="scrollingbgVariable?'bg':'notbg'">
+    <div class="project__text__card" (scroll)="onScroll()" [ngClass]="scrollingbgVariable?'bg':'notbg'">
         <h1>{{icollection.title}}</h1>
         <br>
         <hr class="project__space" >
@@ -16,14 +16,18 @@
         <p class="project__paragraph">{{icollection.style}}</p>
         <hr>
         <br>
+        <ng-container *ngIf="icollection && icollection.design && icollection.design.length > 0">
         <h4>Proyecto</h4>
         <p class="project__paragraph"><a [href]="icollection.href" target="_blank">{{icollection.design}}</a></p>
         <hr>
         <br>
+        </ng-container>
+        <ng-container *ngIf="icollection && icollection.location && icollection.location.length > 0">
         <h4>Ubicación</h4>
         <p class="project__paragraph">{{icollection.location}}</p>
         <hr>
         <br>
+        </ng-container>
         <h4>Localidad</h4>
         <p class="project__paragraph">{{icollection.city}}</p>
         <hr>
@@ -32,7 +36,7 @@
         <p class="project__paragraph">{{icollection.year}}</p>
         <br>
     </div>
-    <div class="project__text" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
+    <div class="project__text container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
         <div class="project__separator"><div class="project__separator__2" [ngClass]="{'noanimated': !scrollingFadeIn, 'project__separator__animated ':scrollingFadeIn}" #project></div></div>
         <h3>Sobre el proyecto</h3>
         <p>{{icollection.description}}</p>
@@ -40,47 +44,109 @@
     </div>
     <div class="project__img__2 container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
       <picture>
-          <source [srcset]="icollection.srcset[2]" type="image/webp">
-          <img [src]="icollection.src[2]" loading="lazy" [alt]="icollection.alt[2]">
+          <source [srcset]="icollection.srcset[1]" type="image/webp">
+          <img [src]="icollection.src[1]" loading="lazy" [alt]="icollection.alt[2]">
       </picture>
     </div>
-    <div class="project__img__3 container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
+    <div class="project__gallery container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
+    <ng-container *ngIf="icollection && icollection.src[2] && icollection.src.length > 0">
+    <div class="gallery__img" (click)="imageOpen()">
+      <picture>
+          <source [srcset]="icollection.srcset[2]" type="image/webp">
+          <img [src]="icollection.src[2]" loading="lazy" [alt]="icollection.alt[3]">
+      </picture>
+    </div>
+    </ng-container>
+    <ng-container *ngIf="icollection && icollection.src[3] && icollection.src.length > 0">
+    <div class="gallery__img" (click)="imageOpenTwo()">
       <picture>
           <source [srcset]="icollection.srcset[3]" type="image/webp">
-          <img [src]="icollection.src[3]" loading="lazy" [alt]="icollection.alt[3]">
+          <img [src]="icollection.src[3]" loading="lazy" [alt]="icollection.alt[4]">
       </picture>
     </div>
-    <div class="project__img__4 container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
+    </ng-container>
+    <ng-container *ngIf="icollection && icollection.src[4] && icollection.src.length > 0">
+    <div class="gallery__img" (click)="imageOpenThree()">
       <picture>
           <source [srcset]="icollection.srcset[4]" type="image/webp">
-          <img [src]="icollection.src[4]" loading="lazy" [alt]="icollection.alt[4]">
+          <img [src]="icollection.src[4]" loading="lazy" [alt]="icollection.alt[5]">
       </picture>
-      <div class="project__pic"><p>Reforma interior de local Osaki.</p></div>
     </div>
-    <div class="project__img__5 container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
+    </ng-container>
+    <ng-container *ngIf="icollection && icollection.src[5] && icollection.src.length > 0">
+    <div class="gallery__img" (click)="imageOpenFour()">
       <picture>
           <source [srcset]="icollection.srcset[5]" type="image/webp">
-          <img [src]="icollection.src[5]" loading="lazy" [alt]="icollection.alt[5]">
+          <img [src]="icollection.src[5]" loading="lazy" [alt]="icollection.alt[6]">
       </picture>
-      <div class="project__pic"><p>Nuevo revestimiento del frente de local Osaki.</p></div>
     </div>
-    <div class="project__img__6 container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
+    </ng-container>
+    <ng-container *ngIf="icollection && icollection.src[6] && icollection.src.length > 0">
+    <div class="gallery__img" (click)="imageOpenFive()">
       <picture>
           <source [srcset]="icollection.srcset[6]" type="image/webp">
-          <img [src]="icollection.src[6]" loading="lazy" [alt]="icollection.alt[6]">
+          <img [src]="icollection.src[6]" loading="lazy" [alt]="icollection.alt[7]">
       </picture>
-      <div class="project__pic"><p>Reforma interior de local Osaki.</p></div>
     </div>
-    <div class="project__img__7 container" [ngClass]="{'noanimated': !scrollingFadeInThree, 'animated':scrollingFadeInThree}" #projectThree>
-      <picture>
-          <source [srcset]="icollection.srcset[7]" type="image/webp">
-          <img [src]="icollection.src[7]" loading="lazy" [alt]="icollection.alt[7]">
-      </picture>
-      <div class="project__pic"><p>Nuevo revestimiento del frente de local Osaki.</p></div>
+    </ng-container>
     </div>
-    <div class="project__video container" [ngClass]="{'noanimated': !scrollingFadeInThree, 'animated':scrollingFadeInThree}" #projectThree>
-      <iframe [src]="getVideoIframe(icollection.video)" [title]="icollection.videoTitle"
-      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <ng-container *ngIf="icollection && icollection.video && icollection.video.length > 0">
+    <div class="project__video container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
+      <youtube-player [videoId]="icollection.video"
+      [title]="icollection.videoTitle">
+      </youtube-player>
     </div>
+    </ng-container>
 </section>
+
+<div class="light__box animate__zoomIn" *ngIf="windowOpen">
+  <button class="btn__close" (click)="close()">X</button>
+  <button class="btn__controls btn__prev" *ngIf="controls" (click)="prev()">←</button>
+  <button class="btn__controls btn__next" *ngIf="controls" (click)="next()">→</button>
+  <picture>
+    <source [srcset]="icollection.srcset[2]" type="image/webp">
+    <img [src]="icollection.src[2]" loading="lazy" [alt]="icollection.alt[3]">
+  </picture>
+</div>
+
+<div class="light__box animate__zoomIn" *ngIf="windowOpenTwo">
+  <button class="btn__close" (click)="close()">X</button>
+  <button class="btn__controls btn__prev" *ngIf="controls" (click)="prev()">←</button>
+  <button class="btn__controls btn__next" *ngIf="controls" (click)="next()">→</button>
+  <picture>
+    <source [srcset]="icollection.srcset[3]" type="image/webp">
+    <img [src]="icollection.src[3]" loading="lazy" [alt]="icollection.alt[5]">
+  </picture>
+</div>
+
+<div class="light__box animate__zoomIn" *ngIf="windowOpenThree">
+  <button class="btn__close" (click)="close()">X</button>
+  <button class="btn__controls btn__prev" *ngIf="controls" (click)="prev()">←</button>
+  <button class="btn__controls btn__next" *ngIf="controls" (click)="next()">→</button>
+  <picture>
+    <source [srcset]="icollection.srcset[4]" type="image/webp">
+    <img [src]="icollection.src[4]" loading="lazy" [alt]="icollection.alt[5]">
+  </picture>
+</div>
+
+<div class="light__box animate__zoomIn" *ngIf="windowOpenFour">
+  <button class="btn__close" (click)="close()">X</button>
+  <button class="btn__controls btn__prev" *ngIf="controls" (click)="prev()">←</button>
+  <button class="btn__controls btn__next" *ngIf="controls" (click)="next()">→</button>
+  <picture>
+    <source [srcset]="icollection.srcset[5]" type="image/webp">
+    <img [src]="icollection.src[5]" loading="lazy" [alt]="icollection.alt[6]">
+  </picture>
+</div>
+
+<div class="light__box" *ngIf="windowOpenFive">
+  <button class="btn__close" (click)="close()">X</button>
+  <button class="btn__controls btn__prev" *ngIf="controls" (click)="prev()">←</button>
+  <button class="btn__controls btn__next" *ngIf="controls" (click)="next()">→</button>
+  <picture>
+    <source [srcset]="icollection.srcset[6]" type="image/webp">
+    <img [src]="icollection.src[6]" loading="lazy" [alt]="icollection.alt[7]">
+  </picture>
+</div>
+
 

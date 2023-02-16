@@ -16,7 +16,7 @@ import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
 import { DataService } from './services/data.service';
-import { LoadingComponent } from './components/loading/loading.component';
+
 
 
 @NgModule({
@@ -28,8 +28,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     FormComponent,
     FooterComponent,
     WhatsappComponent,
-    NotfoundComponent,
-    LoadingComponent
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

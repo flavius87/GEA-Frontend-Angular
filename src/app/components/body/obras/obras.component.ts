@@ -1,8 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
-import { Icollection } from '../../../interfaces/projects';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-obras',
@@ -12,27 +10,37 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class ObrasComponent implements OnInit{
 
   fade:boolean = false;
-  scrollingFadeIn:boolean = false;
-  scrollingFadeInTwo:boolean = false;
-  scrollingFadeInThree:boolean = false;
+  loading!:boolean;
+  scrollingFadeIn!:boolean;
   scrollingbgVariable:boolean = false;
+  windowOpen:boolean = false;
+  windowOpenTwo:boolean = false;
+  windowOpenThree:boolean = false;
+  windowOpenFour:boolean = false;
+  windowOpenFive:boolean = false;
+  controls:boolean = true;
+
 
   @ViewChild('project') divproject!: ElementRef;
-  @ViewChild('projectTwo') divprojectTwo!: ElementRef;
-  @ViewChild('projectThree') divprojectThree!: ElementRef;
-  icollections: Icollection[]=[];
   icollection: any = {};
 
+
   constructor(private dataService:DataService,
-    private readonly route:ActivatedRoute,
-    private _sanitizer: DomSanitizer){}
+    private readonly route:ActivatedRoute){
+      this.loading = true;
+      this.scrollingFadeIn = false;
+    }
 
   ngOnInit(): void{
     this.route.params.subscribe( params => {
-      this.icollection = this.dataService.getWork( params['url'] );
+      this.getWork( params['id'] );
     })
-    this.dataService.getWorks().subscribe(
-      icollections => {this.icollections = icollections})
+
+    const tag = document.createElement('script');
+
+  	tag.src = "https://www.youtube.com/iframe_api";
+
+  	document.body.appendChild(tag);
   }
 
   @HostListener('document:scroll', ['$event'])
@@ -40,15 +48,9 @@ export class ObrasComponent implements OnInit{
       const windowHeight = window.innerHeight;
 
       const boundingRectFadeIn = this.divproject.nativeElement.getBoundingClientRect();
-      const boundingRectFadeInTwo = this.divprojectTwo.nativeElement.getBoundingClientRect();
-      const boundingRectFadeInThree = this.divprojectThree.nativeElement.getBoundingClientRect();
 
       if(boundingRectFadeIn.top >= 0 && boundingRectFadeIn.bottom <= windowHeight) {
         this.scrollingFadeIn = true;
-      } else if(boundingRectFadeInTwo.top >= 0 && boundingRectFadeInTwo.bottom <= windowHeight) {
-        this.scrollingFadeInTwo = true;
-      } else if(boundingRectFadeInThree.top >= 0 && boundingRectFadeInThree.bottom <= windowHeight) {
-        this.scrollingFadeInThree = true;
       }
     }
   @HostListener('window:scroll', ['$event'])onScroll(){
@@ -60,17 +62,93 @@ export class ObrasComponent implements OnInit{
     }
   }
 
-  getVideoIframe(url:any) {
-    var video, results;
+  getWork( id:string ){
+    this.loading = true;
+    this.dataService.getWork( id ).subscribe(
+      icollection => {console.log(icollection);
+      this.icollection = icollection;
+      this.loading = false;
+    });
+  }
 
-    if (url === null) {
-        return '';
-    }
-    results = url.match('[\\?&]v=([^&#]*)');
-    video   = (results === null) ? url : results[1];
+  imageOpen(){
+    this.windowOpen = !this.windowOpen;
+  }
 
-    return this._sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video);
-}
+  imageOpenTwo(){
+    this.windowOpenTwo = !this.windowOpenTwo;
+  }
+
+  imageOpenThree(){
+    this.windowOpenThree = !this.windowOpenThree;
+  }
+
+  imageOpenFour(){
+    this.windowOpenFour = !this.windowOpenFour;
+  }
+
+  imageOpenFive(){
+    this.windowOpenFive = !this.windowOpenFive;
+  }
+
+  close(){
+    if(this.windowOpen) {this.windowOpen = !this.windowOpen}
+    else if(this.windowOpenTwo) {this.windowOpenTwo = !this.windowOpenTwo}
+    else if (this.windowOpenThree) {this.windowOpenThree = !this.windowOpenThree}
+    else if (this.windowOpenFour) {this.windowOpenFour = !this.windowOpenFour}
+    else if (this.windowOpenFive) {this.windowOpenFive = !this.windowOpenFive};
+  }
+
+  prev():void{
+    if(typeof this.icollection.src[3] === 'undefined') {
+      this.windowOpen = !this.windowOpen
+      }
+    if(this.windowOpen) {
+      this.windowOpen = !this.windowOpen
+      this.windowOpenFour = !this.windowOpenFour}
+    else if(this.windowOpenTwo) {
+      this.windowOpenTwo = !this.windowOpenTwo
+      this.windowOpen = !this.windowOpen}
+    else if (this.windowOpenThree) {
+      this.windowOpenThree = !this.windowOpenThree
+      this.windowOpenTwo = !this.windowOpenTwo}
+    else if (this.windowOpenFour) {
+      this.windowOpenFour = !this.windowOpenFour
+      this.windowOpenThree = !this.windowOpenThree};
+  }
+
+
+  next(){
+
+    if(typeof this.icollection.src[3] === 'undefined') {
+      this.windowOpen = !this.windowOpen
+      }
+    if(this.windowOpen) {
+      this.windowOpen = !this.windowOpen
+      this.windowOpenTwo = !this.windowOpenTwo}
+    else if(this.windowOpenTwo) {
+      this.windowOpenTwo = !this.windowOpenTwo
+      this.windowOpenThree = !this.windowOpenThree}
+    else if (this.windowOpenThree) {
+      this.windowOpenThree = !this.windowOpenThree
+      this.windowOpenFour = !this.windowOpenFour}
+    else if (this.windowOpenFour) {
+      this.windowOpenFour = !this.windowOpenFour
+      this.windowOpen = !this.windowOpen};
+    /*if(this.windowOpen) {
+      this.windowOpen = !this.windowOpen
+      this.windowOpenTwo = !this.windowOpenTwo}
+    else{this.windowOpen = !this.windowOpen}
+    if(this.windowOpenTwo) {
+      this.windowOpenTwo = !this.windowOpenTwo
+      this.windowOpenThree = !this.windowOpenThree}
+    else if (this.windowOpenThree) {
+      this.windowOpenThree = !this.windowOpenThree
+      this.windowOpenFour = !this.windowOpenFour}
+    else if (this.windowOpenFour) {
+      this.windowOpenFour = !this.windowOpenFour
+      this.windowOpen = !this.windowOpen};*/
+  }
 
 }
 

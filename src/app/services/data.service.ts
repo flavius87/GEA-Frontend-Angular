@@ -16,7 +16,7 @@ export class DataService {
     return this.http.get<Icollection[]>(baseUrl);
   }
 
-  getWork(url:string): Observable<Icollection>{
-    return this.http.get<Icollection>(`${baseUrl}/${url}`);
+  getWork(id:string): Observable<Icollection>{
+    return this.http.get<Icollection>(`${baseUrl}/${id}`);
   }
 }

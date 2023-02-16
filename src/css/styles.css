@@ -20,6 +20,28 @@ html {
     box-sizing: border-box;
 }
 
+.animate__animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  animation-duration: 1.0s;
+}
+
 body{
     font-family: 'League Spartan', sans-serif;
 }
@@ -634,7 +656,7 @@ textarea:focus~.float__bar::before{
   height: 80px;
 }
 
-button {
+.contact__button button {
     background: var(--gray);
     width: 200px;
     height: 40px;
@@ -651,7 +673,7 @@ button {
     top: 0;
 }
 
-button:hover {
+.contact__button button:hover {
     transition: all 0.5s ease-out;
     background-color: var(--water-green);
     -webkit-transition: all 0.5s ease-out;
@@ -835,6 +857,56 @@ button:hover {
     padding-top: 5px;
     width: 32px;
     height: 32px;
+}
+
+/* Videos */
+
+.project__video iframe {
+  display: inline-block;
+  vertical-align: top !important;
+  background-position: center !important;
+  background-size: cover !important;
+  width: 100% !important;
+  height: 210px !important;
+}
+
+/* Loading */
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading img {
+  height: 120px;
+}
+
+@keyframes spin
+{
+    0%
+    {
+        -webkit-transform: rotate(0);
+                transform: rotate(0);
+    }
+    100%
+    {
+        -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+    }
+}
+
+.spin {
+  -webkit-animation-name: spin;
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 2s;
+}
+
+.rotate__180
+{
+    transform: rotate(180deg);
 }
 
 @media (min-width:400px) {
@@ -1083,6 +1155,11 @@ textarea {
     height: 65px;
 }
 
+.project__video iframe {
+  display: inline-block;
+  min-height: 450px !important;
+}
+
 }
 
 @media (min-width: 1024px) {
@@ -1108,6 +1185,18 @@ textarea {
 textarea {
   width: 670px;
 }
+
+.project__video iframe {
+  display: inline-block;
+  min-height: 600px !important;
+}
+
+/* Loading */
+
+.loading {
+  padding: 40px;
+}
+
 
 }
 
@@ -1190,6 +1279,12 @@ textarea {
   width: 200px;
 }
 
+/* Loading */
+
+.loading {
+  padding: 40px;
+}
+
 }
 
 @media (min-width: 1280px) {
@@ -1251,6 +1346,10 @@ textarea {
     top: 5%;
 }
 
+.project__video iframe {
+  display: inline-block;
+  min-height: 650px !important;
+}
 
 /* about */
 
@@ -1262,6 +1361,12 @@ textarea {
 textarea {
   width: 435px;
 }
+
+/* Loading */
+
+.loading {
+  padding: 40px;
+}
 }
 
 @media (min-width: 1900px) {
@@ -1272,5 +1377,16 @@ textarea {
 /* contact */
 form {
   width: 64%;
+}
+
+.project__video iframe {
+  display: inline-block;
+  min-height: 950px !important;
+}
+
+/* Loading */
+
+.loading {
+  padding: 60px;
 }
 }

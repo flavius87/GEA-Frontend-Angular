@@ -6,7 +6,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', component: BodyComponent},
-  { path: 'obras/:url', component: ObrasComponent,
+  { path: 'obras/:id', component: ObrasComponent,
   loadChildren: ()=> import('./routes/works/works.module').then(m => m.WorksModule)},
   { path: "**", component: NotfoundComponent}
 ];

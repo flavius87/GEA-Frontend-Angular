@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { HttpClientModule } from '@angular/common/http';
 
 import { WorksRoutingModule } from './works-routing.module';
 import { ObrasComponent } from 'src/app/components/body/obras/obras.component';
-import { RouterModule } from '@angular/router';
-
+import { LoadingComponent } from 'src/app//components/loading/loading.component';
 
 @NgModule({
-  declarations: [ObrasComponent],
+  declarations: [ObrasComponent, LoadingComponent],
   imports: [
     CommonModule,
     RouterModule,
-    WorksRoutingModule
+    YouTubePlayerModule,
+    WorksRoutingModule,
+    HttpClientModule
   ]
 })
 export class WorksModule { }
