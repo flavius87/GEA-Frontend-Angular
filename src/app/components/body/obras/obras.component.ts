@@ -12,6 +12,7 @@ export class ObrasComponent implements OnInit{
   fade:boolean = false;
   loading!:boolean;
   scrollingFadeIn!:boolean;
+  scrollingFadeInTwo!:boolean;
   scrollingbgVariable:boolean = false;
   windowOpen:boolean = false;
   windowOpenTwo:boolean = false;
@@ -22,6 +23,7 @@ export class ObrasComponent implements OnInit{
 
 
   @ViewChild('project') divproject!: ElementRef;
+  @ViewChild('projectTwo') divprojectTwo!: ElementRef;
   icollection: any = {};
 
 
@@ -48,11 +50,16 @@ export class ObrasComponent implements OnInit{
       const windowHeight = window.innerHeight;
 
       const boundingRectFadeIn = this.divproject.nativeElement.getBoundingClientRect();
+      const boundingRectFadeInTwo = this.divprojectTwo.nativeElement.getBoundingClientRect();
 
       if(boundingRectFadeIn.top >= 0 && boundingRectFadeIn.bottom <= windowHeight) {
         this.scrollingFadeIn = true;
       }
+      if(boundingRectFadeInTwo.top >= 0 && boundingRectFadeInTwo.bottom <= windowHeight) {
+        this.scrollingFadeInTwo = true;
+      }
     }
+
   @HostListener('window:scroll', ['$event'])onScroll(){
     if(window.scrollY > 800){
       this.scrollingbgVariable = true;
@@ -62,10 +69,23 @@ export class ObrasComponent implements OnInit{
     }
   }
 
+  @HostListener('document:keydown.escape', ['$event']) onKeyescapeHandler(event: KeyboardEvent) {
+    this.close();
+  }
+
+
+  @HostListener('document:keydown.arrowLeft', ['$event']) onKeyLeftHandler(event: KeyboardEvent) {
+    this.prev();
+  }
+
+  @HostListener('document:keydown.arrowRight', ['$event']) onKeyRightHandler(event: KeyboardEvent) {
+    this.next();
+  }
+
   getWork( id:string ){
     this.loading = true;
     this.dataService.getWork( id ).subscribe(
-      icollection => {console.log(icollection);
+      icollection => {
       this.icollection = icollection;
       this.loading = false;
     });
@@ -135,19 +155,6 @@ export class ObrasComponent implements OnInit{
     else if (this.windowOpenFour) {
       this.windowOpenFour = !this.windowOpenFour
       this.windowOpen = !this.windowOpen};
-    /*if(this.windowOpen) {
-      this.windowOpen = !this.windowOpen
-      this.windowOpenTwo = !this.windowOpenTwo}
-    else{this.windowOpen = !this.windowOpen}
-    if(this.windowOpenTwo) {
-      this.windowOpenTwo = !this.windowOpenTwo
-      this.windowOpenThree = !this.windowOpenThree}
-    else if (this.windowOpenThree) {
-      this.windowOpenThree = !this.windowOpenThree
-      this.windowOpenFour = !this.windowOpenFour}
-    else if (this.windowOpenFour) {
-      this.windowOpenFour = !this.windowOpenFour
-      this.windowOpen = !this.windowOpen};*/
   }
 
 }

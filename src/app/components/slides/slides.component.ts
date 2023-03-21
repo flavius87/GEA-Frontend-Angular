@@ -33,9 +33,9 @@ export class SlidesComponent implements OnInit{
       alt: 'Arquitectura y construcción de casa en Ostende',
       title: 'Estudio de Arquitectura & Construcción'
     }, {
-      picweb: 'assets/images/construccion-en-seco.webp',
-      pic: 'assets/images/construccion-en-seco.jpg',
-      alt: 'Construcción en seco, casa en wood frame',
+      picweb: 'assets/images/render-diseño-casa-en-mercedes.webp',
+      pic: 'assets/images/render-diseño-casa-en-mercedes.jpg',
+      alt: 'Diseño y construcción de casa en Mercedes',
       title: 'Estudio de Arquitectura & Construcción'
     }, {
       picweb: 'assets/images/casa-en-poblet.webp',

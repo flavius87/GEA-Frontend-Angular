@@ -11,7 +11,6 @@ html {
     --gray-tr: hsla(345, 6%, 13%, 0.39);
     --white: hsl(180, 100%, 100%);
     --green-gradient: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
-    --procrear: hsl(195, 77%, 53%);
     --swiper-theme-color:#FFFFFF !important;
 }
 
@@ -227,7 +226,7 @@ a {
 
 .mySlider img{
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     object-fit: cover;
     vertical-align: top;
     transition: 2s;
@@ -347,7 +346,7 @@ img:hover .service__img {
   grid-row: 1/1;
   grid-column: 1/1;
   width: 100%;
-  height: 20vh;
+  height: 18vh;
   color: var(--gray);
 }
 
@@ -423,7 +422,9 @@ img:hover .service__img {
 .about__card {
     display: flex;
     justify-content: center;
-    background: var(--water-green);
+    background-image: url(../assets/images/banner/gea-ejecucion-obra-ivan-samko.jpg);
+    width: 100%;
+    background-size: cover;
     max-height: 50vh;
 }
 
@@ -431,7 +432,7 @@ img:hover .service__img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    border: 4px solid var(--white);
+    border: 2px solid var(--white);
     object-fit: cover;
     transform: translateY(40%);
 }
@@ -470,50 +471,35 @@ img:hover .service__img {
     font-weight: 500;
 }
 
-.about__credit {
-    background-color: var(--gray);
+.about__banner {
+  position: relative;
+  width: 100%;
+  height: max-content;
 }
 
-.about__img__credit {
-    position: relative;
-    height: 100%;
+.about__img__banner {
+  position: relative;
+  background-image: url(../assets/images/banner/gea-proyecto-obra-alena-darmel.jpg);
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
 }
 
-.procrear {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-color: var(--procrear);
-    width: 100%;
-    overflow: hidden;
-    transition: all 0.8s ease-in-out;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.about__banner__title {
+  margin-top: 3%;
+  text-align: center;
+  color: var(--gray);
+  font-weight: 400;
+  font-size: 26px;
 }
 
-.procrear img{
-    max-height:90% ;
-    max-width: 100%;
-}
-
-.about__credit:hover .procrear {
-    cursor: pointer;
-    transform: rotateX(90deg);
-    -webkit-transform: rotateX(90deg);
-}
-
-.about__img__credit .about__subtitle a {
-    text-decoration: none;
-    color: white;
-}
-
-.about__img__credit .about__subtitle:hover a {
-    color: var(--procrear);
-    transition: .3s ease;
-    text-decoration: underline;
-    -webkit-transition: .3s ease;
+.about__banner__paragraph {
+  font-weight: 300;
+  font-size: 20px;
+  text-align: justify;
+  line-height: 1.6;
+  color: var(--gray);
 }
 
 /* Contact */
@@ -555,7 +541,7 @@ form {
 
 .contact__title__paragraph {
   text-align: center;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 24px;
   color: white;
   padding: 2% 0% 1%;
@@ -567,10 +553,12 @@ form {
   text-align: justify;
   line-height: 1.6;
   position: relative;
+  color: #fff;
 }
 
 .contact__paragraph span {
   font-weight: 500;
+  color: #fff;
 }
 
 .wrap__map {
@@ -580,22 +568,23 @@ form {
 
 .wrap__map iframe {
   border-radius: 10px;
+  width: 355px;
+  height: 450px;
 }
 
 .contact__title__map {
   text-align: center;
-  font-weight: 300;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 24px;
   color: white;
   padding: 0% 0% 1%;
   margin-top: 3%;
 }
 
-input, textarea {
+input, select, textarea {
     background: none;
-    color: #c6c6c6;
     font-size: 16px;
-    width: 200px;
+    width: 300px;
     padding: 10px 10px 10px 5px;
     display: block;
     border: none;
@@ -603,10 +592,11 @@ input, textarea {
     resize: none;
 }
 
-input:focus, textarea:focus{
+input:focus, select:focus, option:focus, textarea:focus{
     outline: none;
     color: var(--gray);
 }
+
 
 label {
     color: var(--gray-tr);
@@ -620,6 +610,8 @@ label {
 }
 
 input:focus~label, input:valid~label,
+select:focus~label, select:valid~label,
+option:focus~label, option:valid~label,
 textarea:focus~label, textarea:valid~label{
     position: relative;
     font-size: 14px;
@@ -633,6 +625,8 @@ textarea:focus~label, textarea:valid~label{
 }
 
 input:focus~.float__bar::before,
+select:focus~.float__bar::before,
+option:focus~.float__bar::before,
 textarea:focus~.float__bar::before{
     width: 100%;
     color: var(--gray);
@@ -918,7 +912,7 @@ textarea:focus~.float__bar::before{
 
 @media (min-width:520px) {
 
-    .about__card img {
+    .about__banner img {
         width: 250px;
         height: 250px;
     }
@@ -995,7 +989,6 @@ textarea:focus~.float__bar::before{
 .service {
     float: left;
     width: 20em;
-    min-height: 20em;
     margin: 3px;
     padding: 3px;
 }
@@ -1064,13 +1057,13 @@ textarea:focus~.float__bar::before{
 
 /* about */
 
-.about__card img {
+.about__banner img {
     width: 300px;
     height: 300px;
 }
 
 .about__title {
-    padding-top: 17%;
+  padding-top: 12%;
 }
 
 /* Contact */
@@ -1080,7 +1073,7 @@ textarea:focus~.float__bar::before{
 }
 
 form {
-    width: 80%;
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1088,7 +1081,11 @@ form {
 }
 
 textarea {
-  width: 435px;
+  width: 630px;
+}
+
+.wrap__map iframe {
+  width: 730px;
 }
 
 /* Logos */
@@ -1176,14 +1173,9 @@ textarea {
 
 /* about */
 
-.about__card img {
+.about__banner img {
     width: 350px;
     height: 350px;
-}
-
-/* contact */
-textarea {
-  width: 670px;
 }
 
 .project__video iframe {
@@ -1195,6 +1187,12 @@ textarea {
 
 .loading {
   padding: 40px;
+}
+
+/* Contact */
+
+.wrap__map iframe {
+  width: 970px;
 }
 
 
@@ -1258,13 +1256,9 @@ textarea {
     margin-right: 0.5em;
 }
 
-.about__card img {
+.about__banner img {
     width: 280px;
     height: 280px;
-}
-
-.about__title {
-    padding-top: 22%;
 }
 
 /* Contact */
@@ -1276,7 +1270,7 @@ textarea {
 }
 
 textarea {
-  width: 200px;
+  width: 300px;
 }
 
 /* Loading */
@@ -1288,6 +1282,10 @@ textarea {
 }
 
 @media (min-width: 1280px) {
+
+.service {
+  min-height: 20em;
+}
 
 /* Galery works */
 
@@ -1338,7 +1336,6 @@ textarea {
 
 .works__title {
     display: grid;
-    height: 30vh;
     grid-column: 1/8;
   }
 
@@ -1351,16 +1348,20 @@ textarea {
   min-height: 650px !important;
 }
 
-/* about */
-
-.about__title {
-    padding-top: 17%;
-}
-
 /* contact */
-textarea {
-  width: 435px;
+
+form {
+  width: 70%;
 }
+
+textarea {
+  width: 300px;
+}
+
+.wrap__map iframe {
+  width: 440px;
+}
+
 
 /* Loading */
 
@@ -1369,19 +1370,35 @@ textarea {
 }
 }
 
-@media (min-width: 1900px) {
-.about__title {
-    padding-top: 14%;
+@media (min-width:1440px) {
+  .wrap__map iframe {
+    width: 500px;
+  }
 }
 
-/* contact */
-form {
-  width: 64%;
+@media (min-width: 1900px) {
+.about__title {
+    padding-top: 10%;
 }
 
 .project__video iframe {
   display: inline-block;
   min-height: 950px !important;
+}
+
+/* contact */
+
+form {
+  width: 80%;
+}
+
+textarea {
+  width: 630px;
+}
+
+.wrap__map iframe {
+  width: 750px;
+  height: 550px;
 }
 
 /* Loading */

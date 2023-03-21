@@ -48,7 +48,7 @@
           <img [src]="icollection.src[1]" loading="lazy" [alt]="icollection.alt[2]">
       </picture>
     </div>
-    <div class="project__gallery container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
+    <div class="project__gallery container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
     <ng-container *ngIf="icollection && icollection.src[2] && icollection.src.length > 0">
     <div class="gallery__img" (click)="imageOpen()">
       <picture>
@@ -91,7 +91,7 @@
     </ng-container>
     </div>
     <ng-container *ngIf="icollection && icollection.video && icollection.video.length > 0">
-    <div class="project__video container" [ngClass]="{'noanimated': !scrollingFadeIn, 'animated':scrollingFadeIn}" #project>
+    <div class="project__video container" [ngClass]="{'noanimated': !scrollingFadeInTwo, 'animated':scrollingFadeInTwo}" #projectTwo>
       <youtube-player [videoId]="icollection.video"
       [title]="icollection.videoTitle">
       </youtube-player>
