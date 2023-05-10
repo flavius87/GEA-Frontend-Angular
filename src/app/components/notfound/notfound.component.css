@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
 
 :root {
     --water-green-tr: hsla(172, 58%, 39%, 0.404);
@@ -8,12 +8,12 @@
     --white: hsl(180, 100%, 100%);
     --green-gradient: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
     --procrear: hsl(195, 77%, 53%);
+    --blue: hsl(212, 30%, 18%);
 }
 
 body{
     margin: 0px;
-    background-image: var(--green-gradient);
-    font-family: 'League Spartan', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
 .error {
@@ -26,7 +26,7 @@ body{
 
 .error__container {
     text-align: center;
-    color: white;
+    color: var(--blue);
 }
 
 h1 {
@@ -41,9 +41,8 @@ p {
 
 .error a {
     text-decoration: none;
-    color: var(--gray);
+    color: var(--blue);
     padding: 10px;
-    background-color: var(--white);
     border-radius: 2rem;
 }
 

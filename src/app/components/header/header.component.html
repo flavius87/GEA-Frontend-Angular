@@ -1,11 +1,11 @@
-<header class="main__hero">
-    <nav class="main__nav container" (scroll)="onscroll()" [ngClass]="myNav?'fixed':'nofixed'" id="myNav" [class.menuHamburguer]="menuHamburguer">
-        <img src="assets/logos/gea.png" alt="logo_gea" class="main__logo">
+<header>
+    <nav class="main__nav fixed"  id="myNav" [class.menuHamburguer]="menuHamburguer">
+        <img src="assets/logos/logo-gea-arquitectura.svg" alt="logo_gea" class="main__logo">
         <ul class="main__links">
           <li class="main__list"><a href="/" class="main__link">Inicio</a></li>
           <li class="main__list"><a role="button" (click)="onNav('servicios')" class="main__link">Servicios</a></li>
           <li class="main__list"><a role="button" (click)="onNav('obras')" class="main__link">Obras</a></li>
-          <li class="main__list"><a role="button" (click)="onNav('sobre-nosotros')" class="main__link">Sobre nosotros</a></li>
+          <li class="main__list"><a role="button" (click)="onNav('nosotros')" class="main__link">Nosotros</a></li>
           <li class="main__list"><a role="button" (click)="onNav('contacto')" class="main__link">Contacto</a></li>
             <li id="iconos" class="social__icons">
                 <a href="https://www.facebook.com/estudiogeaarq/" target="_blank">

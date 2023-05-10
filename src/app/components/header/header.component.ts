@@ -14,7 +14,7 @@ export class HeaderComponent {
 
   constructor(private router: Router){}
 
-  @HostListener('window:scroll', ['$event'])onscroll(){
+  /*@HostListener('window:scroll', ['$event'])onscroll(){
     if(window.scrollY > 100)
     {
       this.myNav = true;
@@ -22,7 +22,7 @@ export class HeaderComponent {
     else{
       this.myNav = false;
     }
-  }
+  }*/
 
   menuOpen() {
     this.menuHamburguer = !this.menuHamburguer;

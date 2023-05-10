@@ -1,6 +1,9 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError } from 'rxjs/internal/observable/throwError';
+import { Obra } from 'src/app/interfaces/projects';
 
 @Component({
   selector: 'app-obras',
@@ -11,9 +14,8 @@ export class ObrasComponent implements OnInit{
 
   fade:boolean = false;
   loading!:boolean;
-  scrollingFadeIn!:boolean;
   scrollingFadeInTwo!:boolean;
-  scrollingbgVariable:boolean = false;
+  scrollingAbout:boolean = false;
   windowOpen:boolean = false;
   windowOpenTwo:boolean = false;
   windowOpenThree:boolean = false;
@@ -22,19 +24,19 @@ export class ObrasComponent implements OnInit{
   controls:boolean = true;
 
 
-  @ViewChild('project') divproject!: ElementRef;
   @ViewChild('projectTwo') divprojectTwo!: ElementRef;
-  icollection: any = {};
+  @ViewChild('about') divabout!: ElementRef;
+  obra!: Obra;
 
 
   constructor(private dataService:DataService,
     private readonly route:ActivatedRoute){
       this.loading = true;
-      this.scrollingFadeIn = false;
     }
 
   ngOnInit(): void{
     this.route.params.subscribe( params => {
+      console.log(params['id']);
       this.getWork( params['id'] );
     })
 
@@ -49,25 +51,15 @@ export class ObrasComponent implements OnInit{
     public onViewportScroll(){
       const windowHeight = window.innerHeight;
 
-      const boundingRectFadeIn = this.divproject.nativeElement.getBoundingClientRect();
       const boundingRectFadeInTwo = this.divprojectTwo.nativeElement.getBoundingClientRect();
+      const boundingRectAbout = this.divabout.nativeElement.getBoundingClientRect();
 
-      if(boundingRectFadeIn.top >= 0 && boundingRectFadeIn.bottom <= windowHeight) {
-        this.scrollingFadeIn = true;
-      }
       if(boundingRectFadeInTwo.top >= 0 && boundingRectFadeInTwo.bottom <= windowHeight) {
         this.scrollingFadeInTwo = true;
+      } else if(boundingRectAbout.top >= 0 && boundingRectAbout.bottom <= windowHeight) {
+        this.scrollingAbout = true;
       }
     }
-
-  @HostListener('window:scroll', ['$event'])onScroll(){
-    if(window.scrollY > 800){
-      this.scrollingbgVariable = true;
-    }
-    else{
-      this.scrollingbgVariable = false;
-    }
-  }
 
   @HostListener('document:keydown.escape', ['$event']) onKeyescapeHandler(event: KeyboardEvent) {
     this.close();
@@ -82,13 +74,21 @@ export class ObrasComponent implements OnInit{
     this.next();
   }
 
-  getWork( id:string ){
+
+  getWork(id: string) {
     this.loading = true;
-    this.dataService.getWork( id ).subscribe(
-      icollection => {
-      this.icollection = icollection;
-      this.loading = false;
-    });
+    this.dataService.getWork(id)
+      .pipe(
+        tap((obra) => console.log('Obra recuperada:', obra)),
+        catchError((err) => {
+          console.error('Error al recuperar la obra:', err);
+          return throwError(err);
+        })
+      )
+      .subscribe((obra) => {
+        this.obra = obra;
+        this.loading = false;
+      });
   }
 
   imageOpen(){
@@ -120,7 +120,7 @@ export class ObrasComponent implements OnInit{
   }
 
   prev():void{
-    if(typeof this.icollection.src[3] === 'undefined') {
+    if(typeof this.obra.jpg[2] === 'undefined') {
       this.windowOpen = !this.windowOpen
       }
     if(this.windowOpen) {
@@ -140,7 +140,7 @@ export class ObrasComponent implements OnInit{
 
   next(){
 
-    if(typeof this.icollection.src[3] === 'undefined') {
+    if(typeof this.obra.jpg[2] === 'undefined') {
       this.windowOpen = !this.windowOpen
       }
     if(this.windowOpen) {

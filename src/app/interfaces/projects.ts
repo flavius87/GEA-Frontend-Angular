@@ -1,18 +1,18 @@
-export interface Icollection {
+export interface Obra {
   id: string;
-  srcset: string [];
-  src: string [];
-  alt: string [];
-  caption: string [];
   title: string;
   style: string;
+  system: string;
   design?: string;
-  location?: string;
+  link?: string;
+  category: string;
   city: string;
   year: number;
   description: string;
-  href?: string;
+  webp: string [];
+  jpg: string [];
+  alt: string;
   video?: string;
-  videoTitle?: string;
+  titleVideo?: string;
 }
 

@@ -6,9 +6,10 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', component: BodyComponent},
-  { path: 'obras/:id', component: ObrasComponent,
+  { path: '404', component: NotfoundComponent},
+  { path: 'obras',
   loadChildren: ()=> import('./routes/works/works.module').then(m => m.WorksModule)},
-  { path: "**", component: NotfoundComponent}
+  { path: '**', redirectTo:'/404', pathMatch: 'full'}
 ];
 
 const routesExtra: ExtraOptions = {
