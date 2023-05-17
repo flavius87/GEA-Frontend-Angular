@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, ExtraOptions } from '@angular/router';
-import { ObrasComponent } from './components/body/obras/obras.component';
 import { BodyComponent } from './components/body/body.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 

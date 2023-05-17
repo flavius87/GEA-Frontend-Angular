@@ -3,8 +3,8 @@
   <section class="slide" id="inicio">
     <div class="mySlider">
       <h1 class="mySlider__title animate__slideInDown">Arquitectura & Construcción</h1>
+    <app-slides></app-slides>
     </div>
-  <app-slides></app-slides>
   </section>
         <!-- Servicios -->
         <section class="services container" id="servicios">
@@ -59,18 +59,8 @@
         <section class="works container" id="obras">
           <div class="works__title" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
             <h2 class="title">Nuestras Obras</h2>
-            <!-- <div class="works__separator center"></div>-->
           </div>
           <div class="works__galery">
-            <!--<div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork>
-              <picture>
-                  <source srcset="assets/images/galery/prados-de-la-vega-arquitectura-en-barrio-privado.webp" type="image/webp">
-                  <img src="assets/images/galery/prados-de-la-vega-arquitectura-en-barrio-privado.jpg" loading="lazy" alt="Arquitectura en barrios privados de La Plata">
-              </picture>
-              <div class="work__overlay">
-                  <h3 class="work__title">Diseño de proyecto Prados de la Vega</h3>
-              </div>
-            </div>-->
             <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork *ngFor="let obra of obras">
                 <picture>
                     <source [srcset]="obra.webp[0]" type="image/webp">

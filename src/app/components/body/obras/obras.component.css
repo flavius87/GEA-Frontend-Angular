@@ -1,13 +1,3 @@
-:root {
-  --water-green-tr: hsla(172, 58%, 39%, 0.404);
-  --water-green: hsl(172, 58%, 39%);
-  --blue: hsl(211, 31%, 18%);
-  --blue-tr: hsla(198, 36%, 28%, 0.1);
-  --gray: hsl(345, 6%, 13%);
-  --gray-tr: hsla(345, 6%, 13%, 0.39);
-  --white: hsl(180, 100%, 100%);
-  --green-gradient: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
-}
 
 .project {
   display: grid;

@@ -18,8 +18,6 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DataService } from './services/data.service';
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,11 +31,11 @@ import { DataService } from './services/data.service';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     CommonModule,
     NgxParallaxScrollModule,
-    SwiperModule,
-    HttpClientModule
+    SwiperModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
