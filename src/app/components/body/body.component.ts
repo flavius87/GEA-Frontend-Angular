@@ -49,13 +49,12 @@ export class BodyComponent implements OnInit {
   }
 
   loadWorks() {
-    this.dataService.getWorks().pipe(
-      tap((obras) => console.log('Obra recuperada:', obras)),
-      catchError((err) => {
+    this.dataService.getWorks().subscribe({
+      next:(obras) => {this.obras = obras},
+      error:(err) => {
         console.error('Error al recuperar la obra:', err);
-        return throwError(err);
-      })
-    ).subscribe(obras => this.obras = obras);
+      }
+    })
   }
 
   goToWork(id:string){

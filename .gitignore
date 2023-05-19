@@ -4,6 +4,10 @@
 
 /src/assets
 
+# Environments
+
+/src/environment.ts
+
 # Compiled output
 /dist
 /tmp

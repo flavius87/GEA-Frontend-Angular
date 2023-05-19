@@ -1,8 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs/internal/observable/throwError';
 import { Obra } from 'src/app/interfaces/projects';
 
 @Component({
@@ -74,22 +72,21 @@ export class ObrasComponent implements OnInit{
     this.next();
   }
 
-
   getWork(id: string) {
     this.loading = true;
-    this.dataService.getWork(id)
-      .pipe(
-        tap((obra) => console.log('Obra recuperada:', obra)),
-        catchError((err) => {
-          console.error('Error al recuperar la obra:', err);
-          return throwError(err);
-        })
-      )
-      .subscribe((obra) => {
+    this.dataService.getWork(id).subscribe({
+      next: (obra) => {
         this.obra = obra;
         this.loading = false;
-      });
+      },
+      error: (err) => {
+        console.error('Error al recuperar la obra:', err);
+        this.loading = false;
+      }
+    });
   }
+
+
 
   imageOpen(){
     this.windowOpen = !this.windowOpen;

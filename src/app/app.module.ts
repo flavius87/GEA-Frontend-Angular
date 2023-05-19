@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgxParallaxScrollModule } from 'ngx-parallax-scroll';
 import { CommonModule } from '@angular/common';
-import { SwiperModule } from 'swiper/angular';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,9 +31,7 @@ import { DataService } from './services/data.service';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    CommonModule,
-    NgxParallaxScrollModule,
-    SwiperModule
+    CommonModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

@@ -19,22 +19,22 @@ export class DataService {
 
   constructor(private http:HttpClient) { }
 
-  getWorks(): Observable<Obra[]>{
+  getWorks(): Observable<Obra[]> {
     return this.http.get<Obra[]>(this.phpUrl).pipe(
-      tap(data => console.log('Data recibida:', data)),
       catchError((error: HttpErrorResponse) => {
         console.error('Error en getWorks:', error);
-        return throwError(error);
-      }),
+        throw error;
+      })
     );
   }
+
 
   getWork(id: string): Observable<Obra> {
     return this.http.get<Obra>(`${this.phpUrl}/?id=${id}`).pipe(
       tap(data => console.log(`Data recibida para la obra ${id}:`, data)),
       catchError((error: HttpErrorResponse) => {
         console.error(`Error en getWork(${id}):`, error);
-        return throwError(error);
+        throw error;
       })
     );
   }
