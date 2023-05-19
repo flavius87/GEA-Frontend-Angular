@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
-  Url: "https://gearquitectura.com.ar/php/obras.php"
+  production: false,
+  Url: "http://localhost/geabackend/obras.php"
 };
 
