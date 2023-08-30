@@ -5,12 +5,13 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 
 import { WorksRoutingModule } from './works-routing.module';
 import { ObrasComponent } from 'src/app/components/body/obras/obras.component';
-import { LoadingComponent } from 'src/app/components/loading/loading.component';
+import { ShareModule } from 'src/app/share/share.module';
 
 @NgModule({
-  declarations: [ObrasComponent, LoadingComponent],
+  declarations: [ObrasComponent],
   imports: [
     CommonModule,
+    ShareModule,
     RouterModule,
     YouTubePlayerModule,
     WorksRoutingModule

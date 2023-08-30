@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: '404', component: NotfoundComponent},
   { path: 'obras',
   loadChildren: ()=> import('./routes/works/works.module').then(m => m.WorksModule)},
+  { path: 'blog',
+  loadChildren: ()=> import('./routes/blog/blog.module').then(m => m.BlogModule)},
   { path: '**', redirectTo:'/404', pathMatch: 'full'}
 ];
 

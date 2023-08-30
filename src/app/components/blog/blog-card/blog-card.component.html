@@ -1,0 +1,57 @@
+<app-loading *ngIf="loading"></app-loading>
+<!-- Blog body -->
+<section class="blog" id="blog" *ngIf="!loading">
+  <app-head></app-head>
+  <div class="blog__background">
+    <div class="blog__card">
+      <div class="blog__head">Últimos Artículos</div>
+      <div class="blog__items" *ngIf="mainPosts">
+        <div class="blog__item" *ngFor="let mainPost of mainPosts">
+          <div class="blog__image">
+            <img [src]="mainPost.fields.coverImage.fields.file.url" [alt]="mainPost.fields.coverImage.fields.title">
+            <div class="blog__category">{{ mainPost.fields.category.fields.name }}</div>
+          </div>
+          <div class="blog__text">
+            <h3 class="blog__title">{{mainPost.fields.title}}</h3>
+            <p>
+              {{mainPost.fields.summary}}
+            </p>
+            <a (click)="goToPost(mainPost.sys.id)" class="btn read btn-blue"><span>Leer artículo</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog__contact container">
+    <h2>¿Buscás arquitecto?</h2>
+    <p>En GEA Arquitectura, estamos listos para hacer realidad tus proyectos con una propuesta
+      integral de diseño y construcción. Te acompañamos en cada paso del camino, desde la
+      planificación hasta la entrega final. Ya sea que necesites
+      construir, renovar o remodelar espacios existentes, estamos a tu disposición.</p>
+    <a href="https://api.whatsapp.com/send?phone=5492214591846&amp;text=Hola!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n"
+    class="btn read btn-blue" target="_blank"><span>Contactanos</span></a>
+  </div>
+
+  <div class="blog__articles">
+    <div class="blog__card">
+      <div class="blog__items"  *ngIf="blogPosts">
+        <div class="blog__item" *ngFor="let blogPost of blogPosts">
+          <div class="blog__image">
+            <img [src]="blogPost.fields.coverImage.fields.file.url" [alt]="blogPost.fields.title">
+            <div class="blog__category">{{ blogPost.fields.category.fields.name }}</div>
+          </div>
+          <div class="blog__text">
+            <h3 class="blog__title">{{ blogPost.fields.title }}</h3>
+            <p>
+              {{ blogPost.fields.summary }}
+            </p>
+            <a (click)="goToPost(blogPost.sys.id)"  class="btn read btn-blue"><span>Leer artículo</span></a>
+          </div>
+        </div>
+      </div>
+      <!--<div class="blog__pagination"><a class="btn load btn-blue" *ngIf="blogPosts.length >= 3" (click)="loadMorePosts()">CARGAR MÁS ARTÍCULOS</a></div>-->
+    </div>
+
+  </div>
+</section>

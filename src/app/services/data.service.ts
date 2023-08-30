@@ -31,7 +31,7 @@ export class DataService {
 
   getWork(id: string): Observable<Obra> {
     return this.http.get<Obra>(`${this.phpUrl}/?id=${id}`).pipe(
-      tap(data => console.log(`Data recibida para la obra ${id}:`, data)),
+      tap(data => (data)),
       catchError((error: HttpErrorResponse) => {
         console.error(`Error en getWork(${id}):`, error);
         throw error;

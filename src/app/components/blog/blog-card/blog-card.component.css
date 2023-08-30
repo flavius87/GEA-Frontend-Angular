@@ -1,0 +1,135 @@
+.blog__background{
+  width: 100%;
+  background-color: var(--blue-tr);
+  padding: 3em;
+}
+
+.blog__card{
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog__head{
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.blog__items{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+}
+
+.blog__item{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--white);
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  box-shadow: 4px 0px 12px 0px hsl(212deg 30% 18% / 23%);
+}
+
+.blog__image {
+  height: 100%;
+  display: flex;
+}
+
+.blog__image img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.blog__category{
+  position: absolute;
+  color: var(--white);
+  background-color: var(--blue);
+  padding: 7px;
+  font-size: 13px;
+  font-weight: 200;
+}
+
+.blog__text{
+  padding: 1em;
+  text-align: left;
+}
+
+.blog__title{
+  margin-bottom: 10px;
+}
+
+.btn {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.read{
+  width: 150px;
+  height: 40px;
+  margin: 7px auto;
+}
+
+.load{
+  width: 250px;
+  height: 60px;
+}
+
+.btn-blue {
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.btn-blue:hover {
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+  background-color: var(--water-green);
+  border: none;
+}
+
+.blog__contact{
+  max-width: 900px;
+  text-align: center;
+  padding: 2em;
+}
+
+.blog__contact h2{
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.blog__contact p{
+  margin-bottom: 14px;
+  font-size: 19px;
+}
+
+.blog__articles{
+  width: 100%;
+  background-color: #d3d6da;
+  padding: 3em;
+}
+
+.blog__pagination{
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+
+@media (min-width:768px){
+
+  .blog__items{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

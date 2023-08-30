@@ -2,8 +2,6 @@ import { Component, ElementRef, HostListener, ViewChild, OnInit } from '@angular
 import { DataService } from '../../services/data.service';
 import { Obra } from '../../interfaces/projects';
 import { Router } from '@angular/router';
-import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs/internal/observable/throwError';
 
 
 @Component({
@@ -58,7 +56,7 @@ export class BodyComponent implements OnInit {
   }
 
   goToWork(id:string){
-    this.router.navigate( ['/obras', id] )
+    this.router.navigate( ['/obras', id] );
   }
 
 }
