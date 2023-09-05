@@ -47,6 +47,7 @@ a:active {
   transition: 2s;
   background-size: cover;
   background-position: center;
+  max-height: 100vh;
 }
 
 .project__card {
@@ -84,13 +85,13 @@ a:active {
 
 .project__card__2{
   display: grid;
+  grid-template-rows: auto;
   margin-top: 4%;
+  margin-bottom: 4%;
 }
 
 .project__text {
-  animation-name: fadeInLeft;
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
+  transition: transform .5s;
   text-align: center;
 }
 
@@ -233,6 +234,10 @@ a:active {
   transition: 0.2 linear;
 }
 
+.noanimated_2 {
+  opacity: 0;
+}
+
 @keyframes fadeInUp {
   0% {
     opacity: 0.5;
@@ -259,12 +264,16 @@ a:active {
   }
 }
 .animate__zoomIn {
-  -webkit-animation-name: zoomIn;
   animation-name: zoomIn;
-  animation-duration: .2s;
+  animation-duration: .5s;
 }
 
+
 @media (min-width: 768px) {
+
+  .project img {
+    max-height: fit-content;
+  }
 
   .project__gallery {
     margin: 5%;

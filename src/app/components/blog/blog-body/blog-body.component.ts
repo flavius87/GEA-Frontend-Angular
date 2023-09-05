@@ -1,9 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
-import { documentToHtmlString, Options } from '@contentful/rich-text-html-renderer';
-import { Document } from '@contentful/rich-text-types';
-import { ToHtmlPipe } from 'src/app/pipes/to-html.pipe';
 
 
 @Component({
@@ -13,18 +10,19 @@ import { ToHtmlPipe } from 'src/app/pipes/to-html.pipe';
 })
 export class BlogBodyComponent implements OnInit{
 
-
+  @ViewChild('title') subjectElement!: ElementRef;
+  @ViewChild('contentContainer') contentContainer!: ElementRef;
+  @ViewChild('blogImage') blogImageElement!: ElementRef;
   loading!: boolean;
   blogPost: any;
   linkCopied: boolean = false;
 
   /* Share Social Media */
-  postUrl: string = encodeURI(document.location.href);
-  postTitle: string = encodeURIComponent(document.title);
+  postUrl: string = encodeURIComponent(document.location.href);
   recipient: string = 'destinatario@example.com';
 
-
-  constructor(private route:ActivatedRoute, private blogService:BlogService){
+  constructor(private route:ActivatedRoute,
+     private blogService:BlogService){
     this.loading = true;
   }
 
@@ -47,35 +45,46 @@ export class BlogBodyComponent implements OnInit{
         this.loading = false;
       }
     });
+
   }
 
 
   shareOnFacebook(){
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${this.postUrl}`;
+    const title = this.subjectElement.nativeElement.textContent;
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${this.postUrl}&title=${title}`;
+    console.log(this.postUrl);
     window.open(url, '_blank');
   }
 
-  shareOnLinkedin(){
-    const url = `https://www.linkedin.com/shareArticle?url=${this.postUrl}&title=${this.postTitle}`;
+  shareOnLinkedIn(){
+    const title = this.subjectElement.nativeElement.textContent;
+    const img = this.blogImageElement.nativeElement.getAttribute('src');
+    const url = `https://www.linkedin.com/shareArticle?url=${this.postUrl}&title=${title}&source=${img}`;
+    console.log(this.postUrl);
     window.open(url, '_blank');
   }
 
   shareOnPinterest(){
-    const pinterestImg = document.getElementById('blogImage');
-    const url = `https://pinterest.com/pin/create/bookmarklet/?media=${pinterestImg}&url=${this.postUrl}&description=${this.postTitle}`;
+    const title = this.subjectElement.nativeElement.textContent;
+    const img = this.blogImageElement.nativeElement.getAttribute('src');
+    const url = `https://pinterest.com/pin/create/bookmarklet/?&url=${this.postUrl}&description=${title}&media=${img}`;
+    console.log(this.postUrl);
     window.open(url, '_blank');
   }
 
   shareOnWhatsApp(){
-    const url = `https://api.whatsapp.com/send?text=${this.postTitle} ${this.postUrl}`;
+    const title = this.subjectElement.nativeElement.textContent;
+    const url = `https://api.whatsapp.com/send?text=${title}%0A${this.postUrl}`;
     window.open(url, '_blank');
   }
 
   shareOnEmail() {
-    const subject = document.getElementById('subject');
-    const body = document.querySelectorAll('.blog__content');
-    const mailtoLink = `mailto:${this.recipient}?subject=${subject}&body=${body}`;
-    window.open(mailtoLink, '_blank');
+    const title = this.subjectElement.nativeElement.textContent;
+
+    const subject = encodeURIComponent(title);
+
+    const mailtoLink = `mailto:${this.recipient}?subject=${subject}&body=${this.postUrl}`;
+    window.open(mailtoLink);
   }
 
   copyLinkToClipboard() {

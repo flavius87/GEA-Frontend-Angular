@@ -36,4 +36,11 @@ export class HeaderComponent {
     }
   }
 
+  onBlog(url:any) {
+    this.router.navigateByUrl(url);
+    if(screen.width < 768){
+      this.menuOpen();
+    }
+  }
+
 }

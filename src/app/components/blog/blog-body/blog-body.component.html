@@ -1,4 +1,5 @@
 <app-loading *ngIf="loading"></app-loading>
+
 <!-- Blog body -->
 <section class="blog__body" id="blogPost">
   <app-head></app-head>
@@ -7,7 +8,7 @@
       <a (click)="shareOnFacebook()">
         <img src="/assets/icons/facebook-square.svg" alt="facebook"></a>
       <a (click)="shareOnWhatsApp()"><img src="/assets/icons/whatsapp-gray.svg" alt="whatsapp"></a>
-      <a (click)="shareOnLinkedin()">
+      <a (click)="shareOnLinkedIn()">
         <img src="/assets/icons/linkedin-square.svg" alt="linkedin"></a>
       <a (click)="shareOnPinterest()">
           <img src="/assets/icons/pinterest-square.svg" alt="pinterest"></a>
@@ -20,11 +21,11 @@
   <article class="blog__post container">
   <div  class="blog__title">
     <p class="blog__category">{{ blogPost.fields.category.fields.name }}</p>
-    <h1 id="subject">{{blogPost.fields.title}}</h1>
+    <h1 #title>{{blogPost.fields.title}}</h1>
     <div class="blog__image">
-      <img id="blogImage" [src]="blogPost.fields.coverImage.fields.file.url" [alt]="blogPost.fields.title">
+      <img #blogImage [src]="blogPost.fields.coverImage.fields.file.url" [alt]="blogPost.fields.title">
     </div>
   </div>
-  <div class="blog__content" [innerHtml]="blogPost.fields.content | toHtml"></div>
+  <div class="blog__content" #contentContainer [innerHtml]="blogPost.fields.content | toHtml"></div>
   </article>
 </section>

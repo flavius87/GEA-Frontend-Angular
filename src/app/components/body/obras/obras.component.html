@@ -44,11 +44,12 @@
         <br>
     </div>
   </div>
-  <div class="project__card__2" [ngClass]="{'noanimated': !scrollingAbout, 'flipInX':scrollingAbout}" #about>
-    <div class="project__text container">
+  <div class="project__card__2" [ngClass]="{'noanimated':!scrollingAbout, 'animate__zoomIn':scrollingAbout}" #about>
+    <div class="project__text container" >
       <h3>Sobre el proyecto</h3>
       <p [innerHTML]="obra.description" style="font-size: 20px;
       font-weight: 300;
+      color: hsl(212, 30%, 18%);
       text-align: justify;
       line-height: 1.6;"></p>
     </div>

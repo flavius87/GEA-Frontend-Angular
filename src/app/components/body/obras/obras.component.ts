@@ -8,11 +8,11 @@ import { Obra } from 'src/app/interfaces/projects';
   templateUrl: './obras.component.html',
   styleUrls: ['./obras.component.css']
 })
-export class ObrasComponent implements OnInit{
+export class ObrasComponent implements OnInit {
 
   fade:boolean = false;
   loading!:boolean;
-  scrollingFadeInTwo!:boolean;
+  scrollingFadeInTwo:boolean = false;
   scrollingAbout:boolean = false;
   windowOpen:boolean = false;
   windowOpenTwo:boolean = false;
@@ -44,24 +44,28 @@ export class ObrasComponent implements OnInit{
   	document.body.appendChild(tag);
   }
 
-  @HostListener('document:scroll', ['$event'])
-    public onViewportScroll(){
-      const windowHeight = window.innerHeight;
+  @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+    const windowHeight = window.innerHeight;
+    const scrollPosition = window.scrollY;
+    const referencePoint = windowHeight / 2; // Punto de referencia vertical
 
-      const boundingRectFadeInTwo = this.divprojectTwo.nativeElement.getBoundingClientRect();
-      const boundingRectAbout = this.divabout.nativeElement.getBoundingClientRect();
+    const aboutElement = this.divabout.nativeElement;
+    const aboutTop = aboutElement.offsetTop; // Posición superior del elemento #about
+    const aboutBottom = aboutTop + aboutElement.offsetHeight; // Posición inferior del elemento #about
+    const boundingRectFadeInTwo = this.divprojectTwo.nativeElement.getBoundingClientRect();
 
-      if(boundingRectFadeInTwo.top >= 0 && boundingRectFadeInTwo.bottom <= windowHeight) {
-        this.scrollingFadeInTwo = true;
-      } else if(boundingRectAbout.top >= 0 && boundingRectAbout.bottom <= windowHeight) {
-        this.scrollingAbout = true;
-      }
+    // Verifica si el punto de referencia está dentro del elemento #about
+    if (scrollPosition + referencePoint >= aboutTop && scrollPosition + referencePoint <= aboutBottom) {
+      this.scrollingAbout = true;
+    } else if (boundingRectFadeInTwo.top >= 0 && boundingRectFadeInTwo.bottom <= windowHeight) {
+      this.scrollingFadeInTwo = true;
     }
+  }
 
   @HostListener('document:keydown.escape', ['$event']) onKeyescapeHandler(event: KeyboardEvent) {
     this.close();
   }
-
 
   @HostListener('document:keydown.arrowLeft', ['$event']) onKeyLeftHandler(event: KeyboardEvent) {
     this.prev();
