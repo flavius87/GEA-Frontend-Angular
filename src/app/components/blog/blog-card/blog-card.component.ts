@@ -26,8 +26,8 @@ export class BlogCardComponent implements OnInit{
     this.loadMorePosts();
   }
 
-  goToPost(id:string){
-    this.router.navigate(['/blog', id]);
+  goToPost(slug:string){
+    this.router.navigate(['/blog', slug]);
   }
 
   loadPosts(): void{

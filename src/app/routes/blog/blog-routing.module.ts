@@ -5,7 +5,7 @@ import { BlogBodyComponent } from 'src/app/components/blog/blog-body/blog-body.c
 
 const routes: Routes = [
   { path: '', component:BlogCardComponent},
-  { path:':id', component:BlogBodyComponent}
+  { path:':slug', component:BlogBodyComponent}
 ];
 
 @NgModule({

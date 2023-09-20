@@ -16,7 +16,7 @@
             <p>
               {{mainPost.fields.summary}}
             </p>
-            <a (click)="goToPost(mainPost.sys.id)" class="btn read btn-blue"><span>Leer artículo</span></a>
+            <a (click)="goToPost(mainPost.fields.slug)" class="btn read btn-blue"><span>Leer artículo</span></a>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
             <p>
               {{ blogPost.fields.summary }}
             </p>
-            <a (click)="goToPost(blogPost.sys.id)"  class="btn read btn-blue"><span>Leer artículo</span></a>
+            <a (click)="goToPost(blogPost.fields.slug)"  class="btn read btn-blue"><span>Leer artículo</span></a>
           </div>
         </div>
       </div>

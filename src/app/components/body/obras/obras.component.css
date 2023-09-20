@@ -203,7 +203,6 @@ a:active {
 .project__video {
   position:relative;
   padding-bottom: 48.25%;
-  height:0;
 }
 
 @keyframes fadeIn {

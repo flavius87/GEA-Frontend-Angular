@@ -31,14 +31,23 @@ export class BlogService {
   );
   }
 
-  getPostById(id:string):Observable<any>{
-    return from(this.client.getEntry(id)).pipe(
-      tap(blogPost => (blogPost)),
+  getPostById(slug:string):Observable<any>{
+    return from(this.client.getEntries({
+      'fields.slug': slug,
+      'content_type': 'blogPost'
+     })).pipe(
+      map((response: any) => {
+        if (response.items.length > 0) {
+          return response.items[0];
+        } else {
+          throw new Error('Artículo no encontrado');
+        }
+      }),
       catchError((error) => {
-      console.error('Error al obtener el post:', error);
-      return throwError('Error en la obtención del post.');
-    })
-  );
+        console.error('Error al obtener el artículo:', error);
+        return throwError('Error en la obtención del artículo.');
+      })
+    );
   }
 
   getLastPublishedPosts(count: number): Observable<any[]> {

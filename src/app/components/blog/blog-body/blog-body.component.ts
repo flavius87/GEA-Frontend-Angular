@@ -27,15 +27,16 @@ export class BlogBodyComponent implements OnInit{
   }
 
   ngOnInit(): void {
+
     this.route.params.subscribe(
-      params => { this.getPost( params['id'] );
+      params => { this.getPost( params['slug'] );
     }
     );
   }
 
-  getPost(id: string) {
+  getPost(slug: string) {
     this.loading = true;
-    this.blogService.getPostById(id).subscribe({
+    this.blogService.getPostById(slug).subscribe({
       next: (post) => {
         this.blogPost = post;
         this.loading = false;
