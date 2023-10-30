@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from 'src/app/services/blog.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 
 @Component({
@@ -16,13 +17,17 @@ export class BlogBodyComponent implements OnInit{
   loading!: boolean;
   blogPost: any;
   linkCopied: boolean = false;
+  metaTitle!: string;
+  metaDescription!: string;
 
   /* Share Social Media */
   postUrl: string = encodeURIComponent(document.location.href);
   recipient: string = 'destinatario@example.com';
 
   constructor(private route:ActivatedRoute,
-     private blogService:BlogService){
+    private blogService:BlogService,
+    private title:Title,
+    private meta:Meta){
     this.loading = true;
   }
 
@@ -32,11 +37,29 @@ export class BlogBodyComponent implements OnInit{
       params => { this.getPost( params['slug'] );
     }
     );
+
+    this.blogService.getPostById('slug').subscribe( data => {
+      this.metaTitle = this.blogPost.fields.metaTitle;
+      this.metaDescription = this.blogPost.fields.metaDescription;
+
+      this.updateTitleTag(this.metaTitle);
+      this.updateMetaTag(this.metaDescription);
+    }
+    )
+
+  }
+
+  updateTitleTag(metaTitle: string) {
+    this.title.setTitle( metaTitle );
+  }
+
+  updateMetaTag(metaDescription: string) {
+    this.meta.updateTag({ name: 'description', content: metaDescription });
   }
 
   getPost(slug: string) {
     this.loading = true;
-    this.blogService.getPostById(slug).subscribe({
+    this.blogService.getPostBySlug(slug).subscribe({
       next: (post) => {
         this.blogPost = post;
         this.loading = false;

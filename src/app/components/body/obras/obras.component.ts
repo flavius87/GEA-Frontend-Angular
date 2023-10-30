@@ -2,11 +2,12 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { DataService } from 'src/app/services/data.service';
 import { ActivatedRoute } from '@angular/router';
 import { Obra } from 'src/app/interfaces/projects';
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-obras',
   templateUrl: './obras.component.html',
-  styleUrls: ['./obras.component.css']
+  styleUrls: ['./obras.component.css'],
 })
 export class ObrasComponent implements OnInit {
 
@@ -20,6 +21,8 @@ export class ObrasComponent implements OnInit {
   windowOpenFour:boolean = false;
   windowOpenFive:boolean = false;
   controls:boolean = true;
+  metaTitle!:string;
+  metaDescription!:string;
 
 
   @ViewChild('projectTwo') divprojectTwo!: ElementRef;
@@ -28,13 +31,23 @@ export class ObrasComponent implements OnInit {
 
 
   constructor(private dataService:DataService,
-    private readonly route:ActivatedRoute){
+    private readonly route:ActivatedRoute,
+    private title:Title,
+    private meta:Meta){
       this.loading = true;
     }
 
   ngOnInit(): void{
     this.route.params.subscribe( params => {
       this.getWork( params['id'] );
+    })
+
+    this.dataService.getWork('id').subscribe( data => {
+      this.metaTitle = this.obra.metaTitle;
+      this.metaDescription = this.obra.metaDescription;
+
+      this.updateTitleTag(this.metaTitle);
+      this.updateMetaTag(this.metaDescription);
     })
 
     const tag = document.createElement('script');
@@ -73,6 +86,15 @@ export class ObrasComponent implements OnInit {
 
   @HostListener('document:keydown.arrowRight', ['$event']) onKeyRightHandler(event: KeyboardEvent) {
     this.next();
+  }
+
+
+  updateTitleTag(metaTitle: string) {
+    this.title.setTitle( metaTitle );
+  }
+
+  updateMetaTag(metaDescription: string) {
+    this.meta.updateTag({ name: 'description', content: metaDescription });
   }
 
   getWork(id: string) {

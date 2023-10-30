@@ -31,7 +31,7 @@ export class BlogService {
   );
   }
 
-  getPostById(slug:string):Observable<any>{
+  getPostBySlug(slug:string):Observable<any>{
     return from(this.client.getEntries({
       'fields.slug': slug,
       'content_type': 'blogPost'
@@ -46,6 +46,16 @@ export class BlogService {
       catchError((error) => {
         console.error('Error al obtener el artículo:', error);
         return throwError('Error en la obtención del artículo.');
+      })
+    );
+  }
+
+  getPostById(id: string): Observable<any> {
+    return from(this.client.getEntries({'sys.id':id})).pipe(
+      map(data => (data)),
+      catchError((error) => {
+        console.error(`Error en (${id}):`, error);
+        throw error;
       })
     );
   }

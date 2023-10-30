@@ -877,7 +877,8 @@ textarea:focus~.float__bar::before{
 /* Videos */
 
 .project__video iframe {
-  display: inline-block;
+  overflow: hidden;
+  display: table-cell;
   vertical-align: top !important;
   background-position: center !important;
   background-size: cover !important;

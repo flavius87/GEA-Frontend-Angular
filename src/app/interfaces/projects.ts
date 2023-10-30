@@ -14,5 +14,7 @@ export interface Obra {
   alt: string;
   video?: string;
   titleVideo?: string;
+  metaTitle: string;
+  metaDescription: string;
 }
 
