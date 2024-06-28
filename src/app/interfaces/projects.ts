@@ -1,4 +1,5 @@
 export interface Obra {
+  state: string;
   id: string;
   title: string;
   style: string;

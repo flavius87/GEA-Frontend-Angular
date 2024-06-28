@@ -14,26 +14,28 @@ import { WhatsappComponent } from './components/whatsapp/whatsapp.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
 import { DataService } from './services/data.service';
+import { ShareModule } from "./share/share.module";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SlidesComponent,
-    BodyComponent,
-    FormComponent,
-    FooterComponent,
-    WhatsappComponent,
-    NotfoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    CommonModule
-  ],
-  providers: [DataService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        SlidesComponent,
+        BodyComponent,
+        FormComponent,
+        FooterComponent,
+        WhatsappComponent,
+        NotfoundComponent
+    ],
+    providers: [DataService],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        CommonModule,
+        ShareModule
+    ]
 })
 export class AppModule { }

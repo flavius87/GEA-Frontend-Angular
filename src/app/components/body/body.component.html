@@ -12,7 +12,7 @@
                 <figure class="service__img">
                     <img src="assets/icons/conversation.svg" alt="conversation">
                 </figure>
-                <h3 class="service__title">Ideamos</h3>
+                <span class="service__title">Ideamos</span>
                 <p class="service__paragraph">Escuchamos tus ideas y te brindamos asesoramiento acorde para que puedas
                     considerar
                     las variantes en modelos de construcción, tiempos de ejecución y costos.</p>
@@ -21,7 +21,7 @@
                 <figure class="service__img">
                     <img src="assets/icons/house.svg" alt="Casas a medida">
                 </figure>
-                <h3 class="service__title">Proyectamos</h3>
+                <span class="service__title">Proyectamos</span>
                 <p class="service__paragraph">Le damos forma a tus ideas y las transformamos en un proyecto
                     constructivo,
                     para que puedas ver un resultado simulado en alta calidad.</p>
@@ -30,7 +30,7 @@
                 <figure class="service__img">
                     <img src="assets/icons/calculator.svg" alt="Calculadora de presupuesto">
                 </figure>
-                <h3 class="service__title">Presupuestamos</h3>
+                <span class="service__title">Presupuestamos</span>
                 <p class="service__paragraph">Realizamos una propuesta económica clara, que cubra todas las necesidades
                     de
                     tu proyecto.</p>
@@ -39,7 +39,7 @@
                 <figure class="service__img">
                     <img src="assets/icons/work.svg" alt="Casco de constructor">
                 </figure>
-                <h3 class="service__title">Construimos</h3>
+                <span class="service__title">Construimos</span>
                 <p class="service__paragraph">Llevamos a cabo el proyecto siguiendo tu decisión y de acuerdo con todos
                     los
                     requerimientos
@@ -49,7 +49,7 @@
                 <figure class="service__img">
                     <img src="assets/icons/key.svg" alt="Entregas llave en mano">
                 </figure>
-                <h3 class="service__title">Entregamos</h3>
+                <span class="service__title">Entregamos</span>
                 <p class="service__paragraph">Ofrecemos dos modalidades de contrato: "obra gris" o "llave en mano".
                 </p>
             </div>
@@ -61,7 +61,7 @@
             <h2 class="title">Nuestras Obras</h2>
           </div>
           <div class="works__galery">
-            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" #workGaleryWork *ngFor="let obra of obras">
+            <div class="work__galery" *ngFor="let obra of obras" class="work__galery noanimated" #workItem>
                 <picture>
                     <source [srcset]="obra.webp[0]" type="image/webp">
                     <img [src]="obra.jpg[0]" loading="lazy" [alt]="obra.alt">
@@ -72,7 +72,7 @@
                 </div>
                 </a>
             </div>
-            <div class="work__galery" [ngClass]="{'noanimated': !scrollingWork, 'fadeInUp':scrollingWork}" id="calculator" #workGaleryWork>
+            <div class="work__galery noanimated" #workItem>
                 <picture>
                     <source srcset="assets/images/galery/piscina-en-construccion-mercedes.webp" type="image/webp">
                     <img src="assets/images/galery/piscina-en-construccion-mercedes.jpeg" loading="lazy" alt="Construcción de Piscinas">
@@ -95,7 +95,7 @@
       <div class="about__card__team">
         <div class="about__card__profile">
           <picture>
-              <source src="assets/images/ayelen-giles-arquitecta-city-bell.webp" type="image/webp">
+              <source srcset="assets/images/ayelen-giles-arquitecta-city-bell.webp" type="image/webp">
               <img src="assets/images/ayelen-giles-arquitecta-city-bell.jpg" loading="lazy"
                   alt="Ayelén Giles, Arquitecta Directora del Estudio GEA">
           </picture>
@@ -106,7 +106,7 @@
         </div>
         <div class="about__card__profile">
           <picture>
-              <source src="assets/images/lucio-enriquez.webp" type="image/webp">
+              <source srcset="assets/images/lucio-enriquez.webp" type="image/webp">
               <img src="assets/images/lucio-enriquez.jpg" loading="lazy"
                   alt="Lucio Enriquez, Arquitecto del Estudio GEA">
           </picture>
@@ -114,6 +114,10 @@
           <h2 class="about__title">Lucio Enriquez</h2>
           <h3 class="about__subtitle">ARQUITECTO</h3>
           </div>
+        </div>
+        <div class="about__card__profile">
+          <a class="about__portfolio__btn" href="/assets/Portfolio.pdf" target="_blank">
+            Ver Portfolio</a>
         </div>
       </div>
     </div>
@@ -130,13 +134,16 @@
 
           <p>Nuestros servicios comprenden el diseño, la dirección y construcción de viviendas familiares, casas o departamentos de alquiler,
             garajes, quinchos, oficinas, piscinas de hormigón, pérgolas, decks, reformas, ampliaciones y proyectos paisajísticos, entre otros.
-            Además, <span>gestionamos permisos y autorizaciones para la construcción y reformas.</span></p>
+            Además, <span>gestionamos permisos para la construcción y reformas.</span></p>
 
-          <p>Trabajamos con profesionales confiables y experimentados en las distintas etapas del proyecto,
-            para garantizar calidad y cuidado de cada detalle.
+          <p>Trabajamos con profesionales confiables y experimentados en las distintas etapas del proyecto. Supervisamos
+            cada etapa, garantizando calidad y cuidado de los detalles.
           </p>
       </div>
-      <div class="bg about__background"></div>
+      <video class="bg about__background" loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
+        <source type="video/mp4" src="assets/videos/gea-arquitectura-construcciones.mp4">
+        <source src="assets/videos/gea-arquitectura-construcciones.webm" type="video/webm">
+      </video>
     </div>
   </div>
 </section>
@@ -224,7 +231,8 @@
   <iframe
     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d409.1352744783599!2d-58.04617086562288!3d-34.879282232190576!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5ff4d7770fa85805!2sGea%20Arquitectura!5e0!3m2!1ses!2sar!4v1673503734353!5m2!1ses!2sar"
     allowfullscreen="" loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"></iframe>
+    referrerpolicy="no-referrer-when-downgrade"
+    title="Direccion Gea Arquitectura"></iframe>
   </div>
 </section>
 <section class="contact" id="contacto">

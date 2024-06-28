@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Obra } from '../../interfaces/projects';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class BodyComponent implements OnInit {
 
-
+  @ViewChildren('workItem') workItems!: QueryList<ElementRef>;
   @ViewChild('service') divservice!: ElementRef;
   @ViewChild('workGaleryWork') divworkGaleryWork!: ElementRef;
   @ViewChild('about') divabout!: ElementRef;
@@ -21,8 +21,9 @@ export class BodyComponent implements OnInit {
   scrollingAbout:boolean = false;
   obras: Obra [] = [];
 
-  constructor(private dataService:DataService,
-    private router:Router){}
+
+  constructor(private dataService: DataService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.loadWorks();
@@ -46,13 +47,39 @@ export class BodyComponent implements OnInit {
 
   }
 
+  ngAfterViewInit(): void {
+    this.workItems.changes.subscribe((items) => {
+      this.initializeObserver(items.toArray());
+    });
+  }
+
   loadWorks() {
     this.dataService.getWorks().subscribe({
-      next:(obras) => {this.obras = obras},
-      error:(err) => {
+      next: (obras) => {
+        this.obras = obras;
+        setTimeout(() => {
+          this.initializeObserver(this.workItems.toArray());
+        }, );
+      },
+      error: (err) => {
         console.error('Error al recuperar la obra:', err);
       }
-    })
+    });
+  }
+
+  initializeObserver(elements: ElementRef[]) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('fadeInUp');
+          }, 1000);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    elements.forEach(el => observer.observe(el.nativeElement));
   }
 
   goToWork(id:string){

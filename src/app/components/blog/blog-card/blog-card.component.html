@@ -6,7 +6,7 @@
     <div class="blog__card">
       <div class="blog__head">Últimos Artículos</div>
       <div class="blog__items" *ngIf="mainPosts">
-        <div class="blog__item" *ngFor="let mainPost of mainPosts">
+        <div class="blog__item fadeIn" *ngFor="let mainPost of mainPosts">
           <div class="blog__image">
             <img [src]="mainPost.fields.coverImage.fields.file.url" [alt]="mainPost.fields.coverImage.fields.title">
             <div class="blog__category">{{ mainPost.fields.category.fields.name }}</div>
@@ -36,7 +36,7 @@
   <div class="blog__articles">
     <div class="blog__card">
       <div class="blog__items"  *ngIf="blogPosts">
-        <div class="blog__item" *ngFor="let blogPost of blogPosts">
+        <div class="blog__item noanimated" *ngFor="let blogPost of blogPosts" #blogItem>
           <div class="blog__image">
             <img [src]="blogPost.fields.coverImage.fields.file.url" [alt]="blogPost.fields.title">
             <div class="blog__category">{{ blogPost.fields.category.fields.name }}</div>
